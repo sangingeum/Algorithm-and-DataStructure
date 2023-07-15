@@ -7,7 +7,7 @@ struct Data {
 };
 
 int main() {
-	// Create a priority queue and push elements
+	// Create a priority queue and push elements to it
 	PriorityQueue<Data> q;
 	q.push(3, { 0, 10 });
 	q.push(7, { 1, 9 });

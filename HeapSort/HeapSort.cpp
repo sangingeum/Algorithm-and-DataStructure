@@ -71,3 +71,13 @@ void HeapSort::buildMinHeap(std::vector<int>& arr) {
 			break;
 	}
 }
+
+inline size_t HeapSort::left(size_t parent) {
+	return (parent << 1) + 1;
+}
+inline size_t HeapSort::right(size_t parent) {
+	return (parent << 1) + 2;
+}
+inline size_t HeapSort::parent(size_t child) {
+	return (child - 1) >> 1;
+}

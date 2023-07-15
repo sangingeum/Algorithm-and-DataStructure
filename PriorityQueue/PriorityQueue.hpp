@@ -3,18 +3,22 @@
 #include <utility>
 #include <queue>
 
-
 template<class T>
 class PriorityQueue
 {
 public:
+	// Basic modification operations
 	std::pair<size_t, T> front() const;
 	std::pair<size_t, T> pop();
 	bool empty() const;
 	void push(size_t p, T element);
 private:
 	std::vector<std::pair<int, T>> m_array;
+
+	// Maintains the max heap property for a node at the given index
 	void heapify(size_t index);
+
+	// Returns the index of the left child, the right child, or the parent
 	static inline size_t left(size_t parent);
 	static inline size_t right(size_t parent);
 	static inline size_t parent(size_t child);

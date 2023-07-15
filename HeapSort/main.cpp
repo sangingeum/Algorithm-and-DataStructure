@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <ctime>
 
-void printVec(std::vector<int>& vec) {
+void printVec(const std::vector<int>& vec) {
 	for (auto num : vec) {
 		std::cout << num << " ";
 	}
