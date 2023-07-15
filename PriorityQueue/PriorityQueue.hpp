@@ -8,16 +8,25 @@ class PriorityQueue
 {
 public:
 	// Basic modification operations
+
+	// Time complexity: O(1)
+	// Peeks the highest priority element
 	std::pair<size_t, T> front() const;
+	// Time complexity: O(log(n))
+	// Pops the highest priority element
 	std::pair<size_t, T> pop();
+	// Time complexity: O(1)
 	bool empty() const;
+	// Time complexity: O(log(n))
 	void push(size_t p, T element);
 private:
 	std::vector<std::pair<int, T>> m_array;
 
+	// Time complexity: O(log(n))
 	// Maintains the max heap property for a node at the given index
 	void heapify(size_t index);
 
+	// Time complexity: O(1)
 	// Returns the index of the left child, the right child, or the parent
 	static inline size_t left(size_t parent);
 	static inline size_t right(size_t parent);
