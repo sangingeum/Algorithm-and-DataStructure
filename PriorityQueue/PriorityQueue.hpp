@@ -7,8 +7,6 @@ template<class T>
 class PriorityQueue
 {
 public:
-	// Basic modification operations
-
 	// Time complexity: O(1)
 	// Peeks the highest priority element
 	std::pair<size_t, T> front() const;
@@ -16,8 +14,10 @@ public:
 	// Pops the highest priority element
 	std::pair<size_t, T> pop();
 	// Time complexity: O(1)
+	// Checks if the queue is empty
 	bool empty() const;
 	// Time complexity: O(log(n))
+	// Insert an element with priority p to the queue
 	void push(size_t p, T element);
 private:
 	std::vector<std::pair<int, T>> m_array;
