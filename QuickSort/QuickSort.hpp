@@ -9,6 +9,7 @@ public:
 	QuickSort(std::unique_ptr<Partition>&& strategy)
 		: m_strategy(std::move(strategy))
 	{}
+	// Time Complexity: O(nlog(n)) on average
 	void sort(std::vector<int>& arr);
 private:
 	// Partioning strategy
