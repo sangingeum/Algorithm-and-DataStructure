@@ -16,7 +16,7 @@ std::vector<int> CountingSort::sort(const std::vector<int>& arr, size_t k) {
 	}
 	// Place each element from the input array 
 	// into its correct position in the output array. 
-	for (size_t i = 0; i < size; ++i) {
+	for (size_t i = size - 1; i < size; --i) {
 		output[count[arr[i]] - 1] = arr[i];
 		count[arr[i]] -= 1;
 	}
