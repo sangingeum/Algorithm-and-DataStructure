@@ -10,13 +10,6 @@ struct Data {
 	float grade;
 };
 
-void printVec(const std::vector<int>& vec) {
-	for (auto num : vec) {
-		std::cout << num << " ";
-	}
-	std::cout << "\n";
-}
-
 int main() {
 	// Generate 20 random keys
 	std::srand(unsigned(std::time(nullptr)));
