@@ -19,15 +19,15 @@ int main() {
 	// Pop and print all the elements in the queue
 	while (!q.empty()) {
 		auto [key, data] = q.front(); q.pop();
-		std::cout << std::format("Priority: {}, Data:[id{}, grade{}]\n", key, data.id, data.grade);
+		std::cout << std::format("Priority: {}, Data:[id:{}, grade:{}]\n", key, data.id, data.grade);
 	}
 	/*
-	Priority: 7, Data:[id1, grade9]
-	Priority: 4, Data:[id4, grade3]
-	Priority: 3, Data:[id0, grade10]
-	Priority: 3, Data:[id2, grade4]
-	Priority: 2, Data:[id5, grade7]
-	Priority: 0, Data:[id3, grade7]
+	Priority: 7, Data:[id:1, grade:9]
+	Priority: 4, Data:[id:4, grade:3]
+	Priority: 3, Data:[id:0, grade:10]
+	Priority: 3, Data:[id:2, grade:4]
+	Priority: 2, Data:[id:5, grade:7]
+	Priority: 0, Data:[id:3, grade:7]
 	*/
 	return 0;
 }

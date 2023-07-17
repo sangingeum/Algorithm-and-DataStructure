@@ -12,10 +12,9 @@ void printVec(const std::vector<int>& vec) {
 
 int main() {
 	// Generate a random vector of length 20 whose maximum possible value is k
-	std::srand(unsigned(std::time(nullptr)));
-	std::vector<int> vec;
-	vec.reserve(20);
+	std::vector<int> vec; vec.reserve(20);
 	size_t k = 15;
+	std::srand(unsigned(std::time(nullptr)));
 	for (size_t i = 0; i < 20; ++i) {
 		vec.push_back(std::rand() % (k + 1));
 	}
