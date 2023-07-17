@@ -4,7 +4,7 @@
 #include <format>
 #include <algorithm>
 #include <ctime>
-
+#include <random>
 struct Data {
 	size_t id;
 	float grade;
@@ -30,6 +30,11 @@ int main() {
 	for (size_t i = 0; i < 20; ++i) {
 		table.insert(vec[i], {i, i*5.f});
 	}
+	
+	// Shuffle the keys
+	std::random_device rd;
+	std::mt19937 g(rd());
+	std::shuffle(vec.begin(), vec.end(), g);
 
 	// Test the get operation
 	for (size_t i = 0; i < 20; ++i) {
