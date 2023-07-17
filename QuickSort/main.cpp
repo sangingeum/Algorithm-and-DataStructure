@@ -1,8 +1,9 @@
 #include "QuickSort.hpp"
+#include "Partition.hpp"
 #include <iostream>
 #include <algorithm>
 #include <ctime>
-#include <memory>
+
 
 void printVec(const std::vector<int>& vec) {
 	for (auto num : vec) {
@@ -18,9 +19,9 @@ int main() {
 	std::generate(vec.begin(), vec.end(), std::rand);
 
 	// Create three different quick sort algorithms
-	QuickSort basicQS(std::make_unique<Partition>());
-	QuickSort randomizedQS(std::make_unique<RandomizedPartition>());
-	QuickSort medianOfThreeQS(std::make_unique<MedianOfThreePartition>());
+	QuickSort<Partition> basicQS;
+	QuickSort<RandomizedPartition> randomizedQS;
+	QuickSort<MedianOfThreePartition> medianOfThreeQS;
 	
 	// Print the original unsorted vector
 	printVec(vec);
