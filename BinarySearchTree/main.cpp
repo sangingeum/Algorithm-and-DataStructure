@@ -18,7 +18,7 @@ int main() {
 	vec.push_back(INT32_MIN);
 	vec.push_back(INT32_MAX);
 
-	// Create a binary search tree which stores Data instances
+	// Create a binary search tree that stores Data instances
 	BinarySearchTree<Data> tree;
 
 	// Insert 20 data instances to the tree
@@ -26,7 +26,7 @@ int main() {
 		tree.insert(vec[i], { i, i * 5.f });
 	}
 
-	// Print the keys in the increasing order
+	// Print the keys in increasing order
 	tree.inOrderTreeWalk();
 
 	// Test the get operation
@@ -35,10 +35,10 @@ int main() {
 		std::cout << std::format("id:{}, grade:{}\n", data.id, data.grade);
 	}
 	
-	// data with the smallest key
+	// Data with the smallest key
 	auto data = tree.min();
 	std::cout << std::format("id:{}, grade:{}\n", data.id, data.grade);
-	// data with the largest key
+	// Data with the largest key
 	data = tree.max();
 	std::cout << std::format("id:{}, grade:{}\n", data.id, data.grade);
 
