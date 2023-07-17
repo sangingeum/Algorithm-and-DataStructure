@@ -14,3 +14,4 @@ Collection of C++ algorithm and data structure implementations
 ### Data Structure
 * Priority Queue
 * Hash Table
+* Binary Search Tree
