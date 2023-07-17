@@ -15,9 +15,10 @@ int main() {
 	q.push(0, { 3, 7 });
 	q.push(4, { 4, 3 });
 	q.push(2, { 5, 7 });
+
 	// Pop and print all the elements in the queue
 	while (!q.empty()) {
-		auto [key, data] = q.pop();
+		auto [key, data] = q.front(); q.pop();
 		std::cout << std::format("Priority: {}, Data:[id{}, grade{}]\n", key, data.id, data.grade);
 	}
 	/*

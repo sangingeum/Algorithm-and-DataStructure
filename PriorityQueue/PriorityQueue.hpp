@@ -8,10 +8,10 @@ class PriorityQueue
 public:
 	// Time complexity: O(1)
 	// Peeks the highest priority element
-	std::pair<size_t, T> front() const;
+	std::pair<size_t, T>& front();
 	// Time complexity: O(log(n))
 	// Pops the highest priority element
-	std::pair<size_t, T> pop();
+	void pop();
 	// Time complexity: O(1)
 	// Checks if the queue is empty
 	bool empty() const;
@@ -19,7 +19,7 @@ public:
 	// Insert an element with priority p to the queue
 	void push(size_t p, T element);
 private:
-	std::vector<std::pair<int, T>> m_array;
+	std::vector<std::pair<size_t, T>> m_array;
 
 	// Time complexity: O(log(n))
 	// Maintains the max heap property for a node at the given index
@@ -34,18 +34,16 @@ private:
 
 
 template<class T>
-std::pair<size_t, T> PriorityQueue<T>::front() const {
+std::pair<size_t, T>& PriorityQueue<T>::front() {
 	return m_array[0];
 }
 
 template<class T>
-std::pair<size_t, T> PriorityQueue<T>::pop() {
-	auto toPop = m_array.front();
+void PriorityQueue<T>::pop() {
 	std::swap(m_array.front(), m_array.back());
 	m_array.pop_back();
-	if (!empty())
+	if(!empty())
 		heapify(0);
-	return toPop;
 }
 
 template<class T>
@@ -55,7 +53,7 @@ bool PriorityQueue<T>::empty() const {
 
 template<class T>
 void PriorityQueue<T>::push(size_t p, T element) {
-	m_array.push_back({ p, element });
+	m_array.emplace_back(p, element);
 	size_t curIndex = m_array.size() - 1;
 	while (curIndex != 0) {
 		size_t parentIndex = parent(curIndex);
