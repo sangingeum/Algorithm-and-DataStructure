@@ -1,7 +1,7 @@
 # Algorithm-and-DataStructure
 
 ## Description
-Collection of C++ Algorithm and data structure implementations
+Collection of C++ algorithm and data structure implementations
 
 ## Implementation
 
