@@ -3,6 +3,7 @@
 #include <queue>
 #include "AdjacencyListGraph.hpp"
 #include "AdjacencyMatrixGraph.hpp"
+
 class Node {
 public:
 	float distance{100000.0f};
@@ -10,7 +11,7 @@ public:
 
 
 int main() {
-	// Create a AdjacencyListGraph with 7 vertices
+	// Create an AdjacencyListGraph with 7 vertices
 	size_t numVertex = 7;
 	AdjacencyListGraph<Node> graph(numVertex);
 
@@ -27,11 +28,13 @@ int main() {
 
 	/*  
 	Graph Structure    
-	    ¡ç ¡ç ¡ç ¡ç 6
-	    ¡é       ¡è
-	0 ¡æ 1 ¡æ 2 ¡æ 3 ¡æ 4
-	    ¡é   ¡é       ¡è
-		¡é ¡æ 5 ¡æ ¡æ ¡æ ¡è
+	     <---------6
+		 |         ^
+	     V         |
+	0 -> 1 -> 2 -> 3 -> 4
+	     |    |         ^
+		 V    V         |
+		 ---> 5 ------->|
 	*/
 
 
