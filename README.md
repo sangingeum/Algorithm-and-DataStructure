@@ -15,3 +15,4 @@ Collection of C++ algorithm and data structure implementations
 * Priority Queue
 * Hash Table
 * Binary Search Tree
+* Red Black Tree
