@@ -128,9 +128,9 @@ std::shared_ptr<typename BinarySearchTree<D>::Node> BinarySearchTree<D>::minNode
 	return curNode;
 }
 
-// Replace u with v, v is allowed to be null
-// This functions does not update v's left and right children.
-// So, the responsibility is on the caller's side
+// Replace u with v. v is allowed to be null
+// This function does not update v's left and right children.
+// So, the responsibility of correctly setting them is on the caller's side 
 template <class D>
 void BinarySearchTree<D>::transplant(std::shared_ptr<Node> u, std::shared_ptr<Node> v) {
 	if (!u->parent)

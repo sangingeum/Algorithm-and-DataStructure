@@ -1,9 +1,11 @@
-#include "BinarySearchTree.hpp"
-#include <iostream>
 #include <ctime>
 #include <algorithm>
 #include <vector>
+#include <unordered_set>
+#include <iostream>
 #include <format>
+#include <stdexcept>
+#include "BinarySearchTree.hpp"
 
 struct Data {
 	size_t id;
@@ -11,19 +13,22 @@ struct Data {
 };
 
 int main() {
-	// Generate 18 random keys, 1 very small key, and 1 very large key
-	std::srand(unsigned(std::time(nullptr)));
-	std::vector<long long> vec(18);
-	std::generate(vec.begin(), vec.end(), std::rand);
-	vec.push_back(INT32_MIN);
-	vec.push_back(INT32_MAX);
+	// Generate 18 unique random keys, 1 very small key, and 1 very large key
+	std::srand(static_cast<unsigned>(std::time(nullptr)));
+	std::unordered_set<long long> keyPool;
+	while (keyPool.size() < 18) {
+		keyPool.insert(std::rand());
+	}
+	std::vector<long long> keys(keyPool.begin(), keyPool.end());
+	keys.push_back(INT32_MIN);
+	keys.push_back(INT32_MAX);
 
 	// Create a binary search tree that stores Data instances
 	BinarySearchTree<Data> tree;
 
 	// Insert 20 data instances to the tree
 	for (size_t i = 0; i < 20; ++i) {
-		tree.insert(vec[i], { i, i * 5.f });
+		tree.insert(keys[i], { i, i * 5.f });
 	}
 
 	// Print the keys in increasing order
@@ -31,7 +36,7 @@ int main() {
 
 	// Test the get operation
 	for (size_t i = 0; i < 20; ++i) {
-		auto& data = tree.get(vec[i]);
+		auto& data = tree.get(keys[i]);
 		std::cout << std::format("id:{}, grade:{}\n", data.id, data.grade);
 	}
 	
@@ -44,9 +49,9 @@ int main() {
 
 	// Test the remove and find operations
 	for (size_t i = 0; i < 20; ++i) {
-		bool foundBefore = tree.find(vec[i]);
-		tree.remove(vec[i]);
-		bool foundAfter = tree.find(vec[i]);
+		bool foundBefore = tree.find(keys[i]);
+		tree.remove(keys[i]);
+		bool foundAfter = tree.find(keys[i]);
 		std::cout << std::format("foundBefore:{}, foundAfter:{}\n", foundBefore, foundAfter);
 	}
 
