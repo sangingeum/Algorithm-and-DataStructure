@@ -129,10 +129,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AdjacencyListGraph.hpp" />
+    <ClInclude Include="AdjacencyMatrixGraph.hpp" />
     <ClInclude Include="Graph.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdjacencyListGraph.cpp" />
+    <ClCompile Include="AdjacencyMatrixGraph.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

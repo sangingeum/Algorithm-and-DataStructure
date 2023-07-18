@@ -16,4 +16,4 @@ Collection of C++ algorithm and data structure implementations
 * Hash Table
 * Binary Search Tree
 * Red Black Tree
-* Graph
+* Graph (Adjacency List, Adjacency Matrix)

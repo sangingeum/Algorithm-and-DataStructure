@@ -1,8 +1,8 @@
-#include "AdjacencyListGraph.hpp"
 #include <iostream>
 #include <format>
 #include <queue>
-
+#include "AdjacencyListGraph.hpp"
+#include "AdjacencyMatrixGraph.hpp"
 class Node {
 public:
 	float distance{100000.0f};
