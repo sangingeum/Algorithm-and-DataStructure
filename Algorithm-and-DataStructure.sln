@@ -27,6 +27,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TopologicalSort", "Topologi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DisjointSet", "DisjointSet\DisjointSet.vcxproj", "{7B606E04-3C85-4D32-82B0-1B70619AF64D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kruskal", "Kruskal\Kruskal.vcxproj", "{1F8B1FCE-8249-408C-A3A6-FC54EA5C91B7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{64EB316F-1E95-4958-AC0C-58FA17ED0155} = {64EB316F-1E95-4958-AC0C-58FA17ED0155}
+		{7B606E04-3C85-4D32-82B0-1B70619AF64D} = {7B606E04-3C85-4D32-82B0-1B70619AF64D}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -131,6 +137,14 @@ Global
 		{7B606E04-3C85-4D32-82B0-1B70619AF64D}.Release|x64.Build.0 = Release|x64
 		{7B606E04-3C85-4D32-82B0-1B70619AF64D}.Release|x86.ActiveCfg = Release|Win32
 		{7B606E04-3C85-4D32-82B0-1B70619AF64D}.Release|x86.Build.0 = Release|Win32
+		{1F8B1FCE-8249-408C-A3A6-FC54EA5C91B7}.Debug|x64.ActiveCfg = Debug|x64
+		{1F8B1FCE-8249-408C-A3A6-FC54EA5C91B7}.Debug|x64.Build.0 = Debug|x64
+		{1F8B1FCE-8249-408C-A3A6-FC54EA5C91B7}.Debug|x86.ActiveCfg = Debug|Win32
+		{1F8B1FCE-8249-408C-A3A6-FC54EA5C91B7}.Debug|x86.Build.0 = Debug|Win32
+		{1F8B1FCE-8249-408C-A3A6-FC54EA5C91B7}.Release|x64.ActiveCfg = Release|x64
+		{1F8B1FCE-8249-408C-A3A6-FC54EA5C91B7}.Release|x64.Build.0 = Release|x64
+		{1F8B1FCE-8249-408C-A3A6-FC54EA5C91B7}.Release|x86.ActiveCfg = Release|Win32
+		{1F8B1FCE-8249-408C-A3A6-FC54EA5C91B7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

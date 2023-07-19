@@ -6,7 +6,7 @@ int main() {
 	size_t size = 10;
 	DisjointSet set(size);
 
-	// Uniton sets
+	// Union sets
 	set.unionSets(0, 5);
 	set.unionSets(3, 2);
 	set.unionSets(5, 2);

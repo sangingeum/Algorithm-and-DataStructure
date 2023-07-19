@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7b606e04-3c85-4d32-82b0-1b70619af64d}</ProjectGuid>
-    <RootNamespace>DisjointSet</RootNamespace>
+    <ProjectGuid>{1f8b1fce-8249-408c-a3a6-fc54ea5c91b7}</ProjectGuid>
+    <RootNamespace>Kruskal</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Graph;$(SolutionDir)/DisjointSet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,11 +129,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DisjointSet.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClInclude Include="Kruskal.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DisjointSet.hpp" />
+    <ClCompile Include="..\DisjointSet\DisjointSet.cpp" />
+    <ClCompile Include="Kruskal.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
