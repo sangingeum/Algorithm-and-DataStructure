@@ -1,21 +1,25 @@
-# Algorithm-and-DataStructure
+# C++ Algorithms and Data Structures
 
 ## Description
-Collection of C++ algorithm and data structure implementations
+This repository contains C++ implementations of various algorithms and data structures.
 
 ## Implementation
 
-### Sorting Algorithm
+### Sorting Algorithms
 * Quick Sort
 * Heap Sort
 * Counting Sort
 * Radix Sort
 * Bucket Sort
 * Topological Sort
-### Data Structure
+### Graph Algorithm
+* Kruskal's Algorithm
+### Data Structures
 * Priority Queue
 * Hash Table
 * Binary Search Tree
 * Red Black Tree
-* Graph (Adjacency List, Adjacency Matrix)
+* Graph
+  * Adjacency List
+  * Adjacency Matrix
 * Disjoint Set
