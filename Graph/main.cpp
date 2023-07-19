@@ -4,7 +4,7 @@
 #include "AdjacencyListGraph.hpp"
 #include "AdjacencyMatrixGraph.hpp"
 
-class Node {
+class Vertex {
 public:
 	float distance{100000.0f};
 };
@@ -13,7 +13,7 @@ public:
 int main() {
 	// Create an AdjacencyListGraph with 7 vertices
 	size_t numVertex = 7;
-	AdjacencyListGraph<Node> graph(numVertex);
+	AdjacencyListGraph<Vertex> graph(numVertex);
 
 	// Add edges to the graph (from, to, weight)
 	graph.addEdge(0, 1, 1);
