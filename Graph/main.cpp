@@ -26,26 +26,13 @@ int main() {
 	graph.addEdge(5, 4, 0.5f);
 	graph.addEdge(6, 1, 1);
 
-	/*  
-	Graph Structure    
-	     <---------6
-		 |         ^
-	     V         |
-	0 -> 1 -> 2 -> 3 -> 4
-	     |    |         ^
-		 V    V         |
-		 ---> 5 ------->|
-	*/
-
-
-	// Make a queue that keeps track of what to
-	// search next
+	// Make a queue that keeps track of what to search next
 	std::queue<size_t> toSearch;
 	toSearch.push(0);
 	auto& attribute = graph.getVertexAttribute(0);
 	attribute.distance = 0;
 	
-	// Run the BFS algorithm to calculate the shortest path from vertex 0
+	// Run the BFS algorithm to calculate the shortest distance from vertex 0
 	while (!toSearch.empty()) {
 		auto cur = toSearch.front(); toSearch.pop();
 		auto curDist = graph.getVertexAttribute(cur).distance;

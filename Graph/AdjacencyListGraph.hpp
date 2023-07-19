@@ -15,23 +15,22 @@ public:
     N& getVertexAttribute(size_t index);
 };
 
-// Time Complexity : O(1)
 template <class N, class D>
 void AdjacencyListGraph<N, D>::addEdge(size_t fromIndex, size_t toIndex) {
     this->m_edges[fromIndex].push_back(toIndex);
 }
-// Time Complexity : O(1)
+
 template <class N, class D>
 void AdjacencyListGraph<N, D>::addEdge(size_t fromIndex, size_t toIndex, const D& attribute) {
     addEdge(fromIndex, toIndex);
     this->m_edgeAttributes[fromIndex].push_back(attribute);
 }
-// Time Complexity : O(1)
+
 template <class N, class D>
 std::vector<size_t>& AdjacencyListGraph<N, D>::getAdjacent(size_t index) {
     return this->m_edges[index];
 }
-// Time Complexity : O(1)
+
 template <class N, class D>
 std::vector<D>& AdjacencyListGraph<N, D>::getAdjacentEdgeAttributes(size_t index) {
     return this->m_edgeAttributes[index];
@@ -48,12 +47,12 @@ D& AdjacencyListGraph<N, D>::getEdgeAttribute(size_t fromIndex, size_t toIndex) 
     }
     throw std::out_of_range("out_of_range in getEdge");
 }
-// Time Complexity : O(1)
+
 template <class N, class D>
 std::vector<N>& AdjacencyListGraph<N, D>::getVertexAttributes() {
     return this->m_vertices;
 }
-// Time Complexity : O(1)
+
 template <class N, class D>
 N& AdjacencyListGraph<N, D>::getVertexAttribute(size_t index) {
     return this->m_vertices[index];
