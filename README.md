@@ -18,3 +18,4 @@ Collection of C++ algorithm and data structure implementations
 * Binary Search Tree
 * Red Black Tree
 * Graph (Adjacency List, Adjacency Matrix)
+* Disjoint Set
