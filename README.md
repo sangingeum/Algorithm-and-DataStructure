@@ -11,6 +11,7 @@ Collection of C++ algorithm and data structure implementations
 * Counting Sort
 * Radix Sort
 * Bucket Sort
+* Topological Sort
 ### Data Structure
 * Priority Queue
 * Hash Table
