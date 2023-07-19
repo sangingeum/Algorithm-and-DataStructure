@@ -11,7 +11,7 @@ public:
     virtual void addUndirectedEdge(size_t indexA, size_t indexB);
     virtual void addUndirectedEdge(size_t indexA, size_t indexB, const D& attribute);
     virtual std::vector<size_t>& getAdjacent(size_t index) = 0;
-    virtual std::vector<D>& getAdjacentEdgeAttributes(size_t index) = 0;
+    virtual std::vector<D>& getEdgeAttributes(size_t index) = 0;
     virtual D& getEdgeAttribute(size_t fromIndex, size_t toIndex) = 0;
     virtual std::vector<N>& getVertexAttributes() = 0;
     virtual N& getVertexAttribute(size_t index) = 0;

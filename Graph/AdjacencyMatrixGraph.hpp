@@ -9,7 +9,7 @@ public:
     void addEdge(size_t fromIndex, size_t toIndex);
     void addEdge(size_t fromIndex, size_t toIndex, const D& attribute);
     std::vector<size_t>& getAdjacent(size_t index);
-    std::vector<D>& getAdjacentEdgeAttributes(size_t index);
+    std::vector<D>& getEdgeAttributes(size_t index);
     D& getEdgeAttribute(size_t fromIndex, size_t toIndex);
     std::vector<N>& getVertexAttributes();
     N& getVertexAttribute(size_t index);
@@ -46,7 +46,7 @@ std::vector<size_t>& AdjacencyMatrixGraph<N, D>::getAdjacent(size_t index) {
 
 // getAdjacent should be called first to know which edge is valid
 template <class N, class D>
-std::vector<D>& AdjacencyMatrixGraph<N, D>::getAdjacentEdgeAttributes(size_t index) {
+std::vector<D>& AdjacencyMatrixGraph<N, D>::getEdgeAttributes(size_t index) {
     return this->m_edgeAttributes[index];
 }
 

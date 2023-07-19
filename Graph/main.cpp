@@ -37,7 +37,7 @@ int main() {
 		auto cur = toSearch.front(); toSearch.pop();
 		auto curDist = graph.getVertexAttribute(cur).distance;
 		auto& adj = graph.getAdjacent(cur);
-		auto& weights = graph.getAdjacentEdgeAttributes(cur);
+		auto& weights = graph.getEdgeAttributes(cur);
 		size_t size = adj.size();
 		for (size_t i = 0; i < size; ++i) {
 			auto& targetIndex = adj[i];
