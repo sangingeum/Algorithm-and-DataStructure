@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{64eb316f-1e95-4958-ac0c-58fa17ed0155}</ProjectGuid>
-    <RootNamespace>Graph</RootNamespace>
+    <ProjectGuid>{e821280a-e88d-4c5b-9dc1-7d7e5daa1148}</ProjectGuid>
+    <RootNamespace>TopologicalSort</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Graph</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -128,13 +129,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AdjacencyMatrixGraph.hpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TopologicalSort.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AdjacencyListGraph.cpp" />
-    <ClCompile Include="AdjacencyMatrixGraph.cpp" />
-    <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClInclude Include="TopologicalSort.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
