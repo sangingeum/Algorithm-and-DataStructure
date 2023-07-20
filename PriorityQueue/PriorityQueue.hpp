@@ -6,9 +6,10 @@ template<class T>
 class PriorityQueue
 {
 public:
+	PriorityQueue(bool isMaxQueue = true) : m_isMaxQueue(isMaxQueue) {}
 	// Time complexity: O(1)
 	// Peeks the highest priority element
-	std::pair<float, T>& front();
+	std::pair<float, T> front();
 	// Time complexity: O(log(n))
 	// Pops the highest priority element
 	void pop();
@@ -20,7 +21,7 @@ public:
 	void push(float p, T element);
 private:
 	std::vector<std::pair<float, T>> m_array;
-
+	float m_isMaxQueue{ true };
 	// Time complexity: O(log(n))
 	// Maintains the max heap property for a node at the given index
 	void heapify(size_t index);
@@ -34,8 +35,10 @@ private:
 
 
 template<class T>
-std::pair<float, T>& PriorityQueue<T>::front() {
-	return m_array[0];
+std::pair<float, T> PriorityQueue<T>::front() {
+	if (m_isMaxQueue)
+		return m_array[0];
+	return { -m_array[0].first, m_array[0].second };
 }
 
 template<class T>
@@ -53,6 +56,8 @@ bool PriorityQueue<T>::empty() const {
 
 template<class T>
 void PriorityQueue<T>::push(float p, T element) {
+	if (!m_isMaxQueue)
+		p = -p;
 	m_array.emplace_back(p, element);
 	size_t curIndex = m_array.size() - 1;
 	while (curIndex != 0) {

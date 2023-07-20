@@ -33,5 +33,13 @@ int main() {
 	Priority: -3.0, Data:[id:6, grade:32]
 	Priority: -7.7, Data:[id:5, grade:40]
 	*/
+
+
+	/* MEMO
+	You can create a min priority queue by giving
+	false to the constructor
+	PriorityQueue<Data> q(false);
+	*/
+
 	return 0;
 }
