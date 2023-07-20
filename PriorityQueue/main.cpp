@@ -10,11 +10,13 @@ int main() {
 	// Create a priority queue and push elements to it
 	PriorityQueue<Data> q;
 	q.push(3, { 0, 10 });
-	q.push(7, { 1, 9 });
-	q.push(3, { 2, 4 });
-	q.push(0, { 3, 7 });
-	q.push(4, { 4, 3 });
-	q.push(2, { 5, 7 });
+	q.push(7, { 1, 96 });
+	q.push(3, { 2, 42});
+	q.push(0, { 3, 75 });
+	q.push(4, { 4, 32 });
+	q.push(-7, { 5, 40 });
+	q.push(-3, { 6, 32 });
+	q.push(2, { 7, 76 });
 
 	// Pop and print all the elements in the queue
 	while (!q.empty()) {
