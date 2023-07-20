@@ -14,6 +14,7 @@ This repository contains C++ implementations of various algorithms and data stru
 * Topological Sort
 ### Graph Algorithm
 * Kruskal's Algorithm
+* Prim's Algorithm
 ### Data Structures
 * Priority Queue
 * Hash Table
