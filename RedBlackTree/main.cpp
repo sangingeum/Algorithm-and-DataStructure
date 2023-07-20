@@ -37,7 +37,7 @@ int main() {
     }
 
     // Test min and max operations
-    auto& data = tree.min();
+    auto data = tree.min();
     std::cout << std::format("[MIN] id:{}, grade:{}\n", data.id, data.grade);
     data = tree.max();
     std::cout << std::format("[MAX] id:{}, grade:{}\n", data.id, data.grade);
