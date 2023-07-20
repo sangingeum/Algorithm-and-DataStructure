@@ -1,5 +1,6 @@
 #include "TopologicalSort.hpp"
-
+// Topologically sort the given graph and return a sorted vector of vertices
+// For every directed edge (u, v), vertex u will appear before vertex v.
 std::vector<size_t> TopologicalSort::sort(AdjacencyListGraph<Vertex>& graph) {
 	size_t numVertices = graph.getNumVertices();
 	// Create a stack that keeps track of what to search next
@@ -11,7 +12,7 @@ std::vector<size_t> TopologicalSort::sort(AdjacencyListGraph<Vertex>& graph) {
 		if (!graph.getVertexAttribute(i).visited) {
 			graph.getVertexAttribute(i).visited = true;
 			toSearch.push(i);
-
+			// Run the DFS algorithm using the stack
 			while (!toSearch.empty()) {
 				auto cur = toSearch.top();
 				auto& curAtt = graph.getVertexAttribute(cur);
