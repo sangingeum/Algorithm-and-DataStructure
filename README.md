@@ -16,6 +16,7 @@ This repository contains C++ implementations of various algorithms and data stru
 * Kruskal's Algorithm
 * Prim's Algorithm
 * Bellman-Ford Algorithm
+* Shortest Path in a Directed Acyclic Graph(DAG)
 ### Data Structures
 * Priority Queue
 * Hash Table
