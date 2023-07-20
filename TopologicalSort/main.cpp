@@ -26,16 +26,16 @@ int main() {
 		std::cout << std::format("Vertex:{}\n", vertex);
 	}
 	/*
-	Vertex:7
-	Vertex:2
-	Vertex:6
-	Vertex:0
-	Vertex:1
-	Vertex:3
-	Vertex:5
-	Vertex:4
-	Vertex:8
 	Vertex:9
+	Vertex:8
+	Vertex:4
+	Vertex:5
+	Vertex:3
+	Vertex:1
+	Vertex:0
+	Vertex:6
+	Vertex:2
+	Vertex:7
 	*/
 	return 0;
 }
