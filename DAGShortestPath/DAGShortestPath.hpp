@@ -8,7 +8,6 @@ struct Vertex {
     size_t parent{ std::numeric_limits<size_t>::max() };
     float weightToParent{ 0.f };
     float distance{ std::numeric_limits<float>::max() };
-    bool visited{ false };
 };
 
 class DAGShortestPath

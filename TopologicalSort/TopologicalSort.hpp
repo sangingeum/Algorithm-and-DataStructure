@@ -7,10 +7,6 @@ template <class Vertex>
 class TopologicalSort
 {
 public:
-	// Time Complexity: O(|V|+|E|)
-	// Topologically sort the given graph and return a sorted vector of vertices
-	// For every directed edge (u, v), vertex u will appear before vertex v.
-	// Important: The Vertex type should have a publically accessable 'visited' bool attribute
 	static std::vector<size_t> sort(AdjacencyListGraph<Vertex>& graph);
 };
 
@@ -25,22 +21,22 @@ std::vector<size_t> TopologicalSort<Vertex>::TopologicalSort::sort(AdjacencyList
 	// Create a vector for sorted vertices
 	std::vector<size_t> sorted;
 	sorted.reserve(numVertices);
+	// Create a visited vector
+	std::vector<bool> visited(numVertices, false);
 
 	for (size_t i = 0; i < numVertices; ++i) {
 		// If the current vertex is not visited, push it to the statck
-		if (!graph.getVertexAttribute(i).visited) {
-			graph.getVertexAttribute(i).visited = true;
+		if (!visited[i]) {
+			visited[i] = true;
 			toSearch.push(i);
 			// Run the DFS algorithm using the stack
 			while (!toSearch.empty()) {
 				auto cur = toSearch.top();
-				auto& curAtt = graph.getVertexAttribute(cur);
 				auto& adj = graph.getAdjacent(cur);
 				bool noValidAdj = true;
 				for (size_t next : adj) {
-					auto& att = graph.getVertexAttribute(next);
-					if (!att.visited) {
-						att.visited = true;
+					if (!visited[next]) {
+						visited[next] = true;
 						toSearch.push(next);
 						noValidAdj = false;
 						break; // Break to explore the newly found neighbor immediately

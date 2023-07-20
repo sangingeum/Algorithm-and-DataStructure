@@ -2,10 +2,7 @@
 #include <iostream>
 #include <format>
 
-struct Vertex {
-	bool visited{ false };
-};
-
+struct Vertex {};
 
 int main() {
 	// Create a graph with 10 vertices
