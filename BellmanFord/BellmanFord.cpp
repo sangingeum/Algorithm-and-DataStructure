@@ -1,5 +1,5 @@
 #include "BellmanFord.hpp"
-
+// Time Complexity: O(|V||E|)
 // Given a directed, weighted graph that does not contain a negative cycle and a source vertex,
 // return a shortest path tree whose root is the given source vertex
 AdjacencyListGraph<Vertex> BellmanFord::singleSourceShortestPath(AdjacencyListGraph<Vertex>& graph, size_t source) {
