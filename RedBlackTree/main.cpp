@@ -36,6 +36,12 @@ int main() {
         std::cout << std::format("id:{}, grade:{}\n", data.id, data.grade);
     }
 
+    // Test min and max operations
+    auto& data = tree.min();
+    std::cout << std::format("[MIN] id:{}, grade:{}\n", data.id, data.grade);
+    data = tree.max();
+    std::cout << std::format("[MAX] id:{}, grade:{}\n", data.id, data.grade);
+
     // Test the remove and find operations
     for (std::size_t i = 0; i < keySize; ++i) {
         bool foundBefore = tree.find(keys[i]);
@@ -47,6 +53,7 @@ int main() {
             throw std::runtime_error("Found before and after removal are the same.");
         }
     }
+
 
     return 0;
 }

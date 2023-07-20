@@ -17,6 +17,8 @@ class RedBlackTree
 public:
 	RedBlackTree() { m_null->isRed = false; }
 	D& get(long long key);
+	D& min();
+	D& max();
 	bool find(long long key);
 	void insert(long long key, const D& data);
 	void remove(long long key);
@@ -29,6 +31,7 @@ private:
 	void removeFixup(std::shared_ptr<Node> node);
 	void transplant(std::shared_ptr<Node> u, std::shared_ptr<Node> v);
 	std::shared_ptr<Node> getMinNode(std::shared_ptr<Node> node);
+	std::shared_ptr<Node> getMaxNode(std::shared_ptr<Node> node);
 	std::shared_ptr<Node> getNode(long long key);
 
 };
@@ -41,6 +44,20 @@ D& RedBlackTree<D>::get(long long key) {
 		throw std::out_of_range("out of range");
 	return matchingNode->data;
 }
+
+// Retrives a data instance with the minimum key
+template <class D>
+D& RedBlackTree<D>::min() {
+	return getMinNode(m_root)->data;
+}
+
+// Retrives a data instance with the maximum key
+template <class D>
+D& RedBlackTree<D>::max() {
+	return getMaxNode(m_root)->data;
+}
+
+
 // finds a data instance matching the given key
 // if found, return true. Otherwise, return false
 template <class D>
@@ -275,6 +292,17 @@ std::shared_ptr<typename RedBlackTree<D>::Node> RedBlackTree<D>::getMinNode(std:
 	}
 	return curNode;
 }
+
+// Get a node with the maximum key
+template <class D>
+std::shared_ptr<typename RedBlackTree<D>::Node> RedBlackTree<D>::getMaxNode(std::shared_ptr<Node> node) {
+	auto curNode = node;
+	while (curNode->right != m_null) {
+		curNode = curNode->right;
+	}
+	return curNode;
+}
+
 
 // Find a node matching the given key
 // If not found, return m_null
