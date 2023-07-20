@@ -129,10 +129,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PrioirityQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PriorityQueue.hpp" />
+    <ClInclude Include="MinPriorityQueue.hpp" />
+    <ClInclude Include="MaxPriorityQueue.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

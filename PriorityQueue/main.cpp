@@ -1,4 +1,5 @@
-#include "PriorityQueue.hpp"
+#include "MaxPriorityQueue.hpp"
+#include "MinPriorityQueue.hpp"
 #include <iostream>
 #include <format>
 struct Data {
@@ -8,7 +9,7 @@ struct Data {
 
 int main() {
 	// Create a priority queue and push elements to it
-	PriorityQueue<Data> q;
+	MaxPriorityQueue<Data> q;
 	q.push(3.4f, { 0, 10 });
 	q.push(7.f, { 1, 96 });
 	q.push(3.f, { 2, 42});
@@ -36,9 +37,9 @@ int main() {
 
 
 	/* MEMO
-	You can create a min priority queue by giving
-	false to the constructor
-	PriorityQueue<Data> q(false);
+	You can create a min priority queue by calling
+
+	MinPriorityQueue<Data> q;
 	*/
 
 	return 0;

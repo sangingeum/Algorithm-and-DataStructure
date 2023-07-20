@@ -3,10 +3,9 @@
 #include <utility>
 
 template<class T>
-class PriorityQueue
+class MinPriorityQueue
 {
 public:
-	PriorityQueue(bool isMaxQueue = true) : m_isMaxQueue(isMaxQueue) {}
 	// Time complexity: O(1)
 	// Peeks the highest priority element
 	std::pair<float, T> front();
@@ -19,9 +18,9 @@ public:
 	// Time complexity: O(log(n))
 	// Insert an element with priority p to the queue
 	void push(float p, T element);
+
 private:
 	std::vector<std::pair<float, T>> m_array;
-	float m_isMaxQueue{ true };
 	// Time complexity: O(log(n))
 	// Maintains the max heap property for a node at the given index
 	void heapify(size_t index);
@@ -35,64 +34,60 @@ private:
 
 
 template<class T>
-std::pair<float, T> PriorityQueue<T>::front() {
-	if (m_isMaxQueue)
-		return m_array[0];
-	return { -m_array[0].first, m_array[0].second };
+std::pair<float, T> MinPriorityQueue<T>::front() {
+	return m_array[0];
 }
 
 template<class T>
-void PriorityQueue<T>::pop() {
+void MinPriorityQueue<T>::pop() {
 	std::swap(m_array.front(), m_array.back());
 	m_array.pop_back();
-	if(!empty())
+	if (!empty())
 		heapify(0);
 }
 
 template<class T>
-bool PriorityQueue<T>::empty() const {
+bool MinPriorityQueue<T>::empty() const {
 	return m_array.empty();
 }
 
 template<class T>
-void PriorityQueue<T>::push(float p, T element) {
-	if (!m_isMaxQueue)
-		p = -p;
+void MinPriorityQueue<T>::push(float p, T element) {
 	m_array.emplace_back(p, element);
 	size_t curIndex = m_array.size() - 1;
 	while (curIndex != 0) {
 		size_t parentIndex = parent(curIndex);
-		if (m_array[parentIndex].first < p) {
+		if (m_array[parentIndex].first > p) {
 			std::swap(m_array[parentIndex], m_array[curIndex]);
 		}
 		curIndex = parentIndex;
 	}
 }
 template<class T>
-void PriorityQueue<T>::heapify(size_t index) {
+void MinPriorityQueue<T>::heapify(size_t index) {
 	size_t heapSize = m_array.size() - 1;
 	auto curP = m_array[index].first;
 	auto leftIndex = left(index);
 	auto rightIndex = right(index);
-	size_t largest = index;
-	if (leftIndex <= heapSize && m_array[leftIndex].first > curP)
-		largest = leftIndex;
-	if (rightIndex <= heapSize && m_array[rightIndex].first > m_array[largest].first)
-		largest = rightIndex;
-	if (largest != index) {
-		std::swap(m_array[index], m_array[largest]);
-		heapify(largest);
+	size_t lowest = index;
+	if (leftIndex <= heapSize && m_array[leftIndex].first < curP)
+		lowest = leftIndex;
+	if (rightIndex <= heapSize && m_array[rightIndex].first < m_array[lowest].first)
+		lowest = rightIndex;
+	if (lowest != index) {
+		std::swap(m_array[index], m_array[lowest]);
+		heapify(lowest);
 	}
 }
 template<class T>
-inline size_t PriorityQueue<T>::left(size_t parent) {
+inline size_t MinPriorityQueue<T>::left(size_t parent) {
 	return (parent << 1) + 1;
 }
 template<class T>
-inline size_t PriorityQueue<T>::right(size_t parent) {
+inline size_t MinPriorityQueue<T>::right(size_t parent) {
 	return (parent << 1) + 2;
 }
 template<class T>
-inline size_t PriorityQueue<T>::parent(size_t child) {
+inline size_t MinPriorityQueue<T>::parent(size_t child) {
 	return (child - 1) >> 1;
 }
