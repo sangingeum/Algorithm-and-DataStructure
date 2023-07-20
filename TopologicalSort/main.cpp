@@ -2,6 +2,11 @@
 #include <iostream>
 #include <format>
 
+struct Vertex {
+	bool visited{ false };
+};
+
+
 int main() {
 	// Create a graph with 10 vertices
 	size_t numVertices = 10;
@@ -19,7 +24,7 @@ int main() {
 	graph.addEdge(9, 6);
 
 	// Topologically sort the graph
-	std::vector<size_t> result = TopologicalSort::sort(graph);
+	std::vector<size_t> result = TopologicalSort<Vertex>::sort(graph);
 
 	// Print the result
 	for (auto vertex : result) {
