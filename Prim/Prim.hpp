@@ -18,6 +18,8 @@ public:
 	// Find an MST of the given 'undirected' graph
 	// This function does not check if the given graph is directed or not
 	static AdjacencyListGraph<Vertex> minimumSpanningTree(AdjacencyListGraph<Vertex>& graph);
+private:
+	static void initialize(AdjacencyListGraph<Vertex>& graph);
 };
 
 
@@ -26,7 +28,9 @@ public:
 template <class Vertex>
 AdjacencyListGraph<Vertex> Prim<Vertex>::minimumSpanningTree(AdjacencyListGraph<Vertex>& graph) {
 	size_t numVertices = graph.getNumVertices();
-	
+	// Initialize the graph
+	initialize(graph);
+
 	// Make a MinPriorityQueue that stores vertices based on their keys
 	// The initial key value for all vertices is set to infinity
 	MinPriorityQueue<size_t> vertexQ;
@@ -71,4 +75,13 @@ AdjacencyListGraph<Vertex> Prim<Vertex>::minimumSpanningTree(AdjacencyListGraph<
 	}
 
 	return mst;
+}
+
+template <class Vertex>
+void Prim<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph) {
+	auto& vertextAtts = graph.getVertexAttributes();
+	for (auto& att : vertextAtts) {
+		att.parent = std::numeric_limits<size_t>::max();
+		att.key = std::numeric_limits<float>::max();
+	}
 }

@@ -16,6 +16,8 @@ class DAGShortestPath
 {
 public:
     static AdjacencyListGraph<Vertex> singleSourceShortestPath(AdjacencyListGraph<Vertex>& graph, size_t source);
+private:
+    static void initialize(AdjacencyListGraph<Vertex>& graph, size_t source);
 };
 
 // O(|V| + |E|)
@@ -24,8 +26,8 @@ public:
 template <class Vertex>
 AdjacencyListGraph<Vertex> DAGShortestPath<Vertex>::singleSourceShortestPath(AdjacencyListGraph<Vertex>& graph, size_t source) {
     size_t numVertices = graph.getNumVertices();
-    // Set the distance of the source to 0
-    graph.getVertexAttribute(source).distance = 0;
+    // Initialize the graph
+    initialize(graph, source);
     // Topologically sort the graph. For every edge (u, v) in the graph, u precedes v in the sorted array
     auto sortedVertices = TopologicalSort<Vertex>::sort(graph);
 
@@ -61,4 +63,17 @@ AdjacencyListGraph<Vertex> DAGShortestPath<Vertex>::singleSourceShortestPath(Adj
     }
 
     return shortestPathTree;
+}
+
+
+template <class Vertex>
+void DAGShortestPath<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph, size_t source) {
+    auto& vertextAtts = graph.getVertexAttributes();
+    for (auto& att : vertextAtts) {
+        att.parent = std::numeric_limits<size_t>::max();
+        att.distance = std::numeric_limits<float>::max();
+        att.weightToParent = 0;
+    }
+    // Set the distance of the source to 0
+    graph.getVertexAttribute(source).distance = 0;
 }

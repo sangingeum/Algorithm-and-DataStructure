@@ -15,6 +15,8 @@ class Dijkstra
 {
 public:
 	static AdjacencyListGraph<Vertex> singleSourceShortestPath(AdjacencyListGraph<Vertex>& graph, size_t source);
+private:
+	static void initialize(AdjacencyListGraph<Vertex>& graph, size_t source, MinPriorityQueue<size_t>& minQ);
 };
 
 // Given a graph with positive edges and a source vertex,
@@ -22,13 +24,11 @@ public:
 // This implementation uses a min priority queue
 template <class Vertex>
 AdjacencyListGraph<Vertex> Dijkstra<Vertex>::singleSourceShortestPath(AdjacencyListGraph<Vertex>& graph, size_t source) {
-	// Initialize the min priority queue and the source distance
 	size_t numVertices = graph.getNumVertices();
-	graph.getVertexAttribute(source).distance = 0;
 	MinPriorityQueue<size_t> minQ;
-	for (size_t i = 0; i < numVertices; ++i) {
-		minQ.push(graph.getVertexAttribute(i).distance, i);
-	}
+	// Initialize the min priority queue and the graph;
+	initialize(graph, source, minQ);
+	
 	// Extract a vertex with the minimum distance from the min priority queue
 	// and relax adjacent vertices
 	std::vector<bool> visited(numVertices, false);
@@ -71,4 +71,21 @@ AdjacencyListGraph<Vertex> Dijkstra<Vertex>::singleSourceShortestPath(AdjacencyL
 	}
 
 	return shortestPathTree;
+}
+
+template <class Vertex>
+void Dijkstra<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph, size_t source, MinPriorityQueue<size_t>& minQ) {
+	size_t numVertices = graph.getNumVertices();
+	auto& vertextAtts = graph.getVertexAttributes();
+	for (auto& att : vertextAtts) {
+		att.parent = std::numeric_limits<size_t>::max();
+		att.distance = std::numeric_limits<float>::max();
+		att.weightToParent = 0;
+	}
+	// Set the source distance to 0
+	graph.getVertexAttribute(source).distance = 0;
+	// Init minQ
+	for (size_t i = 0; i < numVertices; ++i) {
+		minQ.push(graph.getVertexAttribute(i).distance, i);
+	}
 }
