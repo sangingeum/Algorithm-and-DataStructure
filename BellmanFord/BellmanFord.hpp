@@ -6,8 +6,8 @@
 /*Example Vertex
 struct Vertex {
     size_t parent{ std::numeric_limits<size_t>::max() };
-    float weightToParent{ 0.f };
-    float distance{ std::numeric_limits<float>::max() };
+    float weightToParent{ std::numeric_limits<float>::infinity() };
+    float distance{ std::numeric_limits<float>::infinity() };
 };
 */
 template <class Vertex>
@@ -87,8 +87,8 @@ void BellmanFord<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph, size_t s
     auto& vertextAtts = graph.getVertexAttributes();
     for (auto& att : vertextAtts) {
         att.parent = std::numeric_limits<size_t>::max();
-        att.distance = std::numeric_limits<float>::max();
-        att.weightToParent = 0;
+        att.distance = std::numeric_limits<float>::infinity();
+        att.weightToParent = std::numeric_limits<float>::infinity();
     }
     // Set the distance of the source to 0
     graph.getVertexAttribute(source).distance = 0;

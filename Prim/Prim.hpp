@@ -6,7 +6,7 @@
 
 /* Example Vertex type
 struct Vertex {
-	float key{std::numeric_limits<float>::max()};
+	float key{std::numeric_limits<float>::infinity()};
 	size_t parent{std::numeric_limits<size_t>::max()};
 };
 */
@@ -82,6 +82,6 @@ void Prim<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph) {
 	auto& vertextAtts = graph.getVertexAttributes();
 	for (auto& att : vertextAtts) {
 		att.parent = std::numeric_limits<size_t>::max();
-		att.key = std::numeric_limits<float>::max();
+		att.key = std::numeric_limits<float>::infinity();
 	}
 }
