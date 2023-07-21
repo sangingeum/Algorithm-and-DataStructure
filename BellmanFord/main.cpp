@@ -2,6 +2,12 @@
 #include <iostream>
 #include <format>
 
+struct Vertex {
+	size_t parent{ std::numeric_limits<size_t>::max() };
+	float weightToParent{ 0.f };
+	float distance{ std::numeric_limits<float>::max() };
+};
+
 int main() {
 	// Create a graph with 5 vertices
 	size_t numVertices = 5;
@@ -22,7 +28,7 @@ int main() {
 	size_t source = 0;
 
 	// Run Bellman-Ford algorithm
-	auto spt = BellmanFord::singleSourceShortestPath(graph, source);
+	auto spt = BellmanFord<Vertex>::singleSourceShortestPath(graph, source);
 
 	// Print the shortest path tree
 	for (size_t i = 0; i < numVertices; ++i) {

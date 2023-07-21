@@ -2,6 +2,12 @@
 #include <iostream>
 #include <format>
 
+struct Vertex {
+	size_t parent{ std::numeric_limits<size_t>::max() };
+	float distance{ std::numeric_limits<float>::max() };
+	float weightToParent{};
+};
+
 int main() {
 	// Create a graph with 5 vertices
 	size_t numVertices = 5;
@@ -22,7 +28,7 @@ int main() {
 	size_t source = 0;
 
 	// Run the Dijkstra's algorithm
-	auto spt = Dijkstra::singleSourceShortestPath(graph, source);
+	auto spt = Dijkstra<Vertex>::singleSourceShortestPath(graph, source);
 
 	// Print the shortest path tree
 	for (size_t i = 0; i < numVertices; ++i) {

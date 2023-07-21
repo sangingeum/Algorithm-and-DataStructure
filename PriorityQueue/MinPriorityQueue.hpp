@@ -7,10 +7,10 @@ class MinPriorityQueue
 {
 public:
 	// Time complexity: O(1)
-	// Peeks the highest priority element
+	// Peeks an element with the lowest priority 
 	std::pair<float, T> front();
 	// Time complexity: O(log(n))
-	// Pops the highest priority element
+	// Pops an element with the lowest priority 
 	void pop();
 	// Time complexity: O(1)
 	// Checks if the queue is empty
@@ -22,7 +22,7 @@ public:
 private:
 	std::vector<std::pair<float, T>> m_array;
 	// Time complexity: O(log(n))
-	// Maintains the max heap property for a node at the given index
+	// Maintains the min heap property for a node at the given index
 	void heapify(size_t index);
 
 	// Time complexity: O(1)

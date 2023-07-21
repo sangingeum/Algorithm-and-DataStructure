@@ -2,6 +2,8 @@
 #include <iostream>
 #include <format>
 
+struct Vertex {};
+
 int main() {
 	// Make an undirected graph with 9 vertices 
 	size_t numVertices = 9;
@@ -24,7 +26,7 @@ int main() {
 	graph.addUndirectedEdge(7, 8, 7);
 
 	// Run the Kruskal's algorithm on the graph
-	auto mst = Kruskal::minimumSpanningTree(graph);
+	auto mst = Kruskal<Vertex>::minimumSpanningTree(graph);
 	
 	// Print the minimum spanning tree
 	for (size_t i = 0; i < numVertices; ++i) {

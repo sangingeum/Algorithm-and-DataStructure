@@ -2,6 +2,11 @@
 #include <iostream>
 #include <format>
 
+struct Vertex {
+	float key{ std::numeric_limits<float>::max() };
+	size_t parent{ std::numeric_limits<size_t>::max() };
+};
+
 int main() {
 	// Make an undirected graph with 9 vertices 
 	size_t numVertices = 9;
@@ -24,7 +29,7 @@ int main() {
 	graph.addUndirectedEdge(7, 8, 7);
 
 	// Run the Prim's algorithm on the graph
-	auto mst = Prim::minimumSpanningTree(graph);
+	auto mst = Prim<Vertex>::minimumSpanningTree(graph);
 
 	// Print the minimum spanning tree
 	for (size_t i = 0; i < numVertices; ++i) {

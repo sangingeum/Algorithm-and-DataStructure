@@ -7,10 +7,10 @@ class MaxPriorityQueue
 {
 public:
 	// Time complexity: O(1)
-	// Peeks the highest priority element
+	// Peeks an element with the highest priority 
 	std::pair<float, T> front();
 	// Time complexity: O(log(n))
-	// Pops the highest priority element
+	// Pops an element with the highest priority 
 	void pop();
 	// Time complexity: O(1)
 	// Checks if the queue is empty
