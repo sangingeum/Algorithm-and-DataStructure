@@ -2,6 +2,7 @@
 #include "AdjacencyListGraph.hpp"
 #include "MinPriorityQueue.hpp"
 #include <limits>
+#include <functional>
 
 /*Example Vertex
 struct Vertex {
@@ -15,15 +16,21 @@ template <class Vertex>
 class AStar
 {
 public:
-	static std::vector<std::pair<size_t, float>> shortestPath(AdjacencyListGraph<Vertex>& graph, size_t from, size_t to);
+	static std::vector<std::pair<size_t, float>> shortestPath(AdjacencyListGraph<Vertex>& graph, size_t from, size_t to, 
+		std::function<float(const std::pair<float, float>&, const std::pair<float, float>&)> heuristic = NoHeuristic);
 private:
 	static void initialize(AdjacencyListGraph<Vertex>& graph, size_t from, size_t to);
-	static float heuristic(const std::pair<float, float>& posA, const std::pair<float, float>& posB);
+	static float NoHeuristic(const std::pair<float, float>& posA, const std::pair<float, float>& posB) {
+		return 0;
+	}
 };
 
 // Find a path from a vertex to another vertex in a graph using the A* algorithm
+// A heuristic function should be passed as an argument to guide the search.
+// If not given, it runs the Dijksta's algorithm instead.
 template <class Vertex>
-std::vector<std::pair<size_t, float>> AStar<Vertex>::shortestPath(AdjacencyListGraph<Vertex>& graph, size_t from, size_t to) {
+std::vector<std::pair<size_t, float>> AStar<Vertex>::shortestPath(AdjacencyListGraph<Vertex>& graph, size_t from, size_t to,
+	std::function<float(const std::pair<float, float>&, const std::pair<float, float>&)> heuristic) {
 	size_t numVetices = graph.getNumVertices();
 	// Initialize the graph's gScroes, fScores, and parents
 	initialize(graph, from, to);
@@ -88,14 +95,15 @@ void AStar<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph, size_t from, s
 		att.fScore = std::numeric_limits<float>::infinity();
 		att.parent = std::numeric_limits<size_t>::max();
 	}
-	// Set the gScore of the source vertex to 0
+	// Set the gScore and the fScore of the source vertex to 0
 	vertexAtts[from].gScore = 0;
-	// Set the fScore of the source vertex to heuristic(from, to)
-	vertexAtts[from].fScore = heuristic(vertexAtts[from].pos, vertexAtts[to].pos);
+	vertexAtts[from].fScore = 0;
 }
 
+/*
 template <class Vertex>
 float AStar<Vertex>::heuristic(const std::pair<float, float>& posA, const std::pair<float, float>& posB) {
 	// Calculate the squared euclidian distance -> quite greedy
 	return powf(posA.first - posB.first, 2) + powf(posA.second - posB.second, 2);
 }
+*/

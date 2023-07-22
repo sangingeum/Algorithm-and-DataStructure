@@ -9,9 +9,7 @@ struct Vertex {
 };
 
 // Calculate the path from A to B using the the A* algorithm and print the calculated path
-void printResult(AdjacencyListGraph<Vertex>& graph, size_t A, size_t B, size_t n) {
-	// Run the A* algorithm
-	auto path = AStar<Vertex>::shortestPath(graph, A, B);
+void printPath(std::vector<std::pair<size_t, float>>& path, size_t n) {
 	for (auto& step : path) {
 		std::cout << std::format("Vertex: {}, Coordinates: [{}, {}], Distance: {}\n", step.first, step.first / n, step.first % n, step.second);
 	}
@@ -37,6 +35,11 @@ void constructNxNGraph(AdjacencyListGraph<Vertex>& graph, size_t n) {
 	}
 }
 
+float heuristic(const std::pair<float, float>& posA, const std::pair<float, float>& posB) {
+	// Calculate the squared euclidian distance -> quite greedy
+	return powf(posA.first - posB.first, 2) + powf(posA.second - posB.second, 2);
+}
+
 
 int main() {
 	// Create a graph with 25 vertices
@@ -46,8 +49,11 @@ int main() {
 	// Make a 5 x 5 grid graph 
 	constructNxNGraph(graph, n);
 
-	// Calculate the path from A to B using the the A* algorithm and print the calculated path
-	printResult(graph, 0, 24, n);
+	// Find a path from A to B using the the A* algorithm
+	// A heuristic function is passed as an argument to guide the search
+	auto path = AStar<Vertex>::shortestPath(graph, 0, 24, heuristic);
+	// Print the path
+	printPath(path, n);
 	/*
 	Vertex: 0, Coordinates: [0, 0], Distance: 0
 	Vertex: 1, Coordinates: [0, 1], Distance: 1
@@ -59,14 +65,16 @@ int main() {
 	Vertex: 19, Coordinates: [3, 4], Distance: 7
 	Vertex: 24, Coordinates: [4, 4], Distance: 8
 	*/
-	printResult(graph, 22, 11, n);
+	path = AStar<Vertex>::shortestPath(graph, 22, 11, heuristic);
+	printPath(path, n);
 	/*
 	Vertex: 22, Coordinates: [4, 2], Distance: 0
 	Vertex: 17, Coordinates: [3, 2], Distance: 1
 	Vertex: 16, Coordinates: [3, 1], Distance: 2
 	Vertex: 11, Coordinates: [2, 1], Distance: 3
 	*/
-	printResult(graph, 16, 5, n);
+	path = AStar<Vertex>::shortestPath(graph, 16, 5, heuristic);
+	printPath(path, n);
 	/*
 	Vertex: 16, Coordinates: [3, 1], Distance: 0
 	Vertex: 11, Coordinates: [2, 1], Distance: 1
