@@ -2,13 +2,14 @@
 #include <iostream>
 #include <format>
 
+// Vertex type for the graph
 struct Vertex {
 	std::pair<float, float> pos;
 	float gScore, fScore;
 	size_t parent;
 };
 
-// Calculate the path from A to B using the the A* algorithm and print the calculated path
+// Print the given path
 void printPath(std::vector<std::pair<size_t, float>>& path, size_t n) {
 	for (auto& step : path) {
 		std::cout << std::format("Vertex: {}, Coordinates: [{}, {}], Distance: {}\n", step.first, step.first / n, step.first % n, step.second);
@@ -39,7 +40,6 @@ float heuristic(const std::pair<float, float>& posA, const std::pair<float, floa
 	// Calculate the squared euclidian distance -> quite greedy
 	return powf(posA.first - posB.first, 2) + powf(posA.second - posB.second, 2);
 }
-
 
 int main() {
 	// Create a graph with 25 vertices
