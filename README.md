@@ -5,7 +5,16 @@ This repository contains C++ implementations of various algorithms and data stru
 
 ## Implementation
 
-### Sorting Algorithms
+### Data Structure
+* Priority Queue
+* Hash Table
+* Binary Search Tree
+* Red Black Tree
+* Graph
+  * Adjacency List
+  * Adjacency Matrix
+* Disjoint Set
+### Sorting Algorithm
 * Quick Sort
 * Heap Sort
 * Counting Sort
@@ -19,12 +28,8 @@ This repository contains C++ implementations of various algorithms and data stru
 * Shortest Path in a Directed Acyclic Graph(DAG)
 * Dijkstra's Algorirhm
 * A* algorithm
-### Data Structures
-* Priority Queue
-* Hash Table
-* Binary Search Tree
-* Red Black Tree
-* Graph
-  * Adjacency List
-  * Adjacency Matrix
-* Disjoint Set
+### Selection Algorithm
+* Quick Selection
+## Code Examples
+For each algorithm and data structure, you can find corresponding C++ code example in their respective folder.
+
