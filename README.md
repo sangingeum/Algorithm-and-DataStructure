@@ -10,6 +10,7 @@ This repository contains C++ implementations of various algorithms and data stru
 * Hash Table
 * Binary Search Tree
 * Red Black Tree
+* K-D Tree
 * Graph
   * Adjacency List
   * Adjacency Matrix
@@ -29,7 +30,7 @@ This repository contains C++ implementations of various algorithms and data stru
 * Dijkstra's Algorirhm
 * A* algorithm
 ### Selection Algorithm
-* Quick Selection
+* Quick Select
 ## Code Examples
 For each algorithm and data structure, you can find corresponding C++ code example in their respective folder.
 
