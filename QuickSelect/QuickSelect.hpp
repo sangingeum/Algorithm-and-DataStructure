@@ -6,6 +6,8 @@ class QuickSelect
 {
 public:
 	// Given a vector and an integer k, return the kth element in the vector
+	// Average Time Complexity: O(n)
+	// Worst Time Complexity: O(n^2)
 	int select(std::vector<int>& vec, size_t k) {
 		return select(vec, k, 0, vec.size() - 1);
 	}
