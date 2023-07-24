@@ -10,6 +10,7 @@
 // TODO
 // Remove, Min, Max, RangeSearch operations
 
+
 template <size_t K, class T = float>
 class KDTree
 {
@@ -23,7 +24,12 @@ private:
 	std::shared_ptr<Node> m_root;
 public:
 	KDTree() = default;
+	// Build a tree using the given points
+	// The resulting tree is guranteed to be balanced
 	KDTree(std::vector<std::array<T, K>>& points) { m_root = buildTree(points, 0, 0, points.size()); }
+
+	// Insert a point into the tree
+	// This method does not guarantee the resulting tree will be balanced
 	void insert(const std::array<T, K>& point) {
 		if (!m_root) {
 			m_root.reset(new Node(point));
@@ -54,19 +60,28 @@ public:
 		}
 	}
 
-	std::array<T, K> findNearest(const std::array<T, K>& target) {
+	// Find a nearest point to the given target in the tree
+	std::array<T, K> findNearestNeighbor(const std::array<T, K>& target) {
 		if (!m_root)
 			throw std::runtime_error("Tree is empty");
-		return findNearest(m_root, target, 0);
+		return findNearestNeighbor(m_root, target, 0);
 	}
 
-private:
+	// Find points in the given range
+	std::vector<std::array<T, K>> searchRange(const std::array<T, K>& lowerBound, const std::array<T, K>& upperBound) {
+		std::vector<std::array<T, K>> results;
+		searchRange(m_root, lowerBound, upperBound, 0, results);
+		return results;
+	}
 
+
+private:
+	// Build a balanced k-d tree from the points vector
 	std::shared_ptr<Node> buildTree(std::vector<std::array<T, K>>& points, size_t depth, size_t from, size_t to) {
 		size_t kIndex = depth % K;
 		size_t nthIndex = (from + to) / 2;
 		auto nth = nthIndex + points.begin();
-		// Split the tree at the median
+		// Find the median point at depth 'kIndex'
 		std::nth_element(points.begin() + from, nth, points.begin() + to,
 			[kIndex](const std::array<T, K>& a, const std::array<T, K>& b) {
 				return a[kIndex] < b[kIndex];
@@ -80,10 +95,13 @@ private:
 		return curNode;
 	}
 
-	std::array<T, K> findNearest(std::shared_ptr<Node> root, const std::array<T, K>& target, size_t depth) {
+
+	std::array<T, K> findNearestNeighbor(std::shared_ptr<Node> root, const std::array<T, K>& target, size_t depth) {
 		size_t curDepth = depth % K;
 		std::shared_ptr<Node> nextBranch;
 		std::shared_ptr<Node> otherBranch;
+		// Determine the next and other branches 
+		// based on the point values at curDepth
 		if (target[curDepth] < root->point[curDepth]) {
 			nextBranch = root->left;
 			otherBranch = root->right;
@@ -92,12 +110,14 @@ private:
 			nextBranch = root->right;
 			otherBranch = root->left;
 		}
-
 		T bestDist;
 		std::array<T, K> bestPoint;
 		std::array<T, K> tempPoint;
+
+		// Explore the next branch if it is not null
 		if (nextBranch) {
-			tempPoint = findNearest(nextBranch, target, depth + 1);
+			// Compare 'root->point' and 'tempPoint' and choose the better point
+			tempPoint = findNearestNeighbor(nextBranch, target, depth + 1);
 			T distToRoot = getSquaredDistance(target, root->point);
 			T distToTemp = getSquaredDistance(target, tempPoint);
 			if (distToRoot > distToTemp) {
@@ -109,25 +129,27 @@ private:
 				bestPoint = root->point;
 			}
 		}
+		// Handle the case when 'nextBranch' is null
 		else {
 			bestPoint = root->point;
 			bestDist = getSquaredDistance(target, root->point);
 		}
-		
+
+		// Explore 'otherbranch' if it is not null
 		if (otherBranch) {
 			T diff = target[curDepth] - root->point[curDepth];
 			T distToOtherBranch = diff * diff;
+			// Search 'otherBranch' if bestDist >= distToOtherBranc
 			if (bestDist >= distToOtherBranch) {
-				tempPoint = findNearest(otherBranch, target, depth + 1);
+				tempPoint = findNearestNeighbor(otherBranch, target, depth + 1);
 				if (bestDist > getSquaredDistance(target, tempPoint))
 					bestPoint = tempPoint;
 			}
 		}
-
-		
 		return bestPoint;
 	}
 
+	// Calculate the distance between two points
 	T getSquaredDistance(const std::array<T, K>& p1, const std::array<T, K>& p2) {
 		T distance = 0;
 		for (size_t i = 0; i < K; ++i) {
@@ -137,5 +159,30 @@ private:
 		return distance;
 	}
 
+	void searchRange(std::shared_ptr<Node> node, const std::array<T, K>& lowerBound, const std::array<T, K>& upperBound,
+		size_t depth, std::vector<std::array<T, K>>& results) {
+		if (!node)
+			return;
+		// Check the current node
+		bool inRange{ true };
+		for (size_t i = 0; i < K; ++i) {
+			if (node->point[i] < lowerBound[i] || node->point[i] > upperBound[i]) {
+				inRange = false;
+				break;
+			}
+		}
+
+		// If it is in the range, append it to the vector
+		if (inRange)
+			results.push_back(node->point);
+
+		// Determine which branch to search
+		size_t nextDepth = (depth + 1) % K;
+		const T& curValue = node->point[depth];
+		if (curValue >= lowerBound[depth])
+			searchRange(node->left, lowerBound, upperBound, nextDepth, results);
+		if (curValue <= upperBound[depth])
+			searchRange(node->right, lowerBound, upperBound, nextDepth, results);
+	}
 };
 
