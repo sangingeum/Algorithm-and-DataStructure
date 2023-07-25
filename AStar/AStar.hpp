@@ -61,7 +61,7 @@ std::vector<std::pair<size_t, float>> AStar<Vertex>::shortestPath(AdjacencyListG
 				auto& neighborAtt = graph.getVertexAttribute(neighbor);
 				float tentativeGScore = curAtt.gScore + edgeAtts[i];
 				// If the path through the current vertex is better, update the neighbor
-				if (neighborAtt.gScore > tentativeGScore) {
+				if (neighborAtt.gScore > tentativeGScore && !visited[neighbor]) {
 					neighborAtt.parent = cur;
 					neighborAtt.gScore = tentativeGScore;
 					neighborAtt.fScore = tentativeGScore + heuristic(neighborAtt.pos, goalAtt.pos);
