@@ -2,35 +2,39 @@
 #include <iostream>
 #include <format>
 
+// Data type for the tree
+// This is not used in this example
+struct Data{};
+
 // Find a point nearest to the given point in the K-D tree and print it 
-void testFindNearest(KDTree<2>& tree, std::array<float, 2> point) {
+void testFindNearest(KDTree<2, Data>& tree, std::array<float, 2> point) {
 	auto result = tree.findNearestNeighbor(point);
-	std::cout << std::format("x:{}, y:{}\n", result[0], result[1]);
+	std::cout << std::format("x:{}, y:{}\n", result.first[0], result.first[1]);
 }
 // Find points within the given range in the K-D tree and print them 
-void testRangeSearch(KDTree<2>& tree, std::array<float, 2> lowerBound, std::array<float, 2> upperBound) {
+void testRangeSearch(KDTree<2, Data>& tree, std::array<float, 2> lowerBound, std::array<float, 2> upperBound) {
 	auto result = tree.searchRange(lowerBound, upperBound);
-	for(const auto& point : result)
-		std::cout << std::format("[x:{}, y:{}] ", point[0], point[1]);
+	for(const auto& pair : result)
+		std::cout << std::format("[x:{}, y:{}] ", pair.first[0], pair.first[1]);
 	std::cout << "\n";
 }
 
 int main() {
 
 	// Construct a vector of 25 points forming a 5 x 5 grid
-	std::vector<std::array<float, 2>> pointVector;
+	std::vector<std::pair<std::array<float, 2>, Data>> pointVector;
 	for (size_t i = 0; i < 5; ++i) {
 		for (size_t j = 0; j < 5; ++j) {
-			pointVector.push_back({ i*1.f, j*1.f });
+			pointVector.push_back({ { i * 1.f, j * 1.f },{}});
 		}
 	}
 
 	// Build a K-D tree using the point vector
 	// The tree can effectively balance itself if points are given to its constructor
-	KDTree<2, float> tree(pointVector);
+	KDTree<2, Data, float> tree(pointVector);
 
 	// Test the findNearest operation
-	testFindNearest(tree, { 0.5f, 0.5f }); // Nearest point to (0.5, 0.5): (0, 0)
+	testFindNearest(tree, { 0.5f, 0.5f }); // Nearest point to (0.5, 0.5): (1, 1)
 	testFindNearest(tree, { 0.2f, 0.4f }); // Nearest point to (0.2, 0.4): (0, 0)
 	testFindNearest(tree, { 1.0f, 4.5f }); // Nearest point to (1.0, 4.5): (1, 4)
 	testFindNearest(tree, { 3.4f, 2.6f }); // Nearest point to (3.4, 2.6): (3, 3)
