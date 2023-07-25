@@ -1,6 +1,6 @@
 #include "KDTree.hpp"
 #include <iostream>
-
+#include <format>
 
 // Find a point nearest to the given point in the K-D tree and print it 
 void testFindNearest(KDTree<2>& tree, std::array<float, 2> point) {
@@ -46,6 +46,8 @@ int main() {
 	testRangeSearch(tree, { 0.f, 0.f }, { 2.0f, 2.0f }); // [x:2, y:2] [x:0, y:2] [x:1, y:1] [x:1, y:0] [x:0, y:0] [x:0, y:1] [x:2, y:1] [x:2, y:0] [x:1, y:2]
 	testRangeSearch(tree, { 3.5f, 2.5f }, { 4.2f, 3.6f }); // [x:4, y:3]
 
+	// Clear the tree
+	tree.clear();
 
 	return 0;
 }

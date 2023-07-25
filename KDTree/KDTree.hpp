@@ -4,8 +4,7 @@
 #include <memory>
 #include <algorithm>
 #include <stdexcept>
-#include <iostream>
-#include <format>
+
 
 // TODO
 // Remove, Min, Max operations
@@ -27,6 +26,9 @@ public:
 	void insert(const std::array<T, K>& point);
 	std::array<T, K> findNearestNeighbor(const std::array<T, K>& target);
 	std::vector<std::array<T, K>> searchRange(const std::array<T, K>& lowerBound, const std::array<T, K>& upperBound);
+	void buildTree(std::vector<std::array<T, K>>& points);
+	void clear();
+
 private:
 	std::shared_ptr<Node> buildTree(std::vector<std::array<T, K>>& points, size_t depth, size_t from, size_t to);
 	std::array<T, K> findNearestNeighbor(std::shared_ptr<Node> root, const std::array<T, K>& target, size_t depth);
@@ -82,6 +84,19 @@ std::vector<std::array<T, K>> KDTree<K, T>::searchRange(const std::array<T, K>& 
 	std::vector<std::array<T, K>> results;
 	searchRange(m_root, lowerBound, upperBound, 0, results);
 	return results;
+}
+
+// Clear the tree and Rebuild the tree using the given points
+template <size_t K, class T>
+void KDTree<K, T>::buildTree(std::vector<std::array<T, K>>& points) {
+	clear();
+	m_root = buildTree(points, 0, 0, points.size());
+}
+
+// Clear the tree
+template <size_t K, class T>
+void KDTree<K, T>::clear() {
+	m_root.reset();
 }
 
 
