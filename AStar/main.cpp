@@ -37,8 +37,8 @@ void constructNxNGraph(AdjacencyListGraph<Vertex>& graph, size_t n) {
 }
 
 float heuristic(const std::pair<float, float>& posA, const std::pair<float, float>& posB) {
-	// Calculate the squared euclidian distance -> quite greedy
-	return powf(posA.first - posB.first, 2) + powf(posA.second - posB.second, 2);
+	// Calculate the euclidian distance
+	return std::sqrtf(powf(posA.first - posB.first, 2) + powf(posA.second - posB.second, 2));
 }
 
 int main() {
@@ -58,11 +58,11 @@ int main() {
 	Vertex: 0, Coordinates: [0, 0], Distance: 0
 	Vertex: 1, Coordinates: [0, 1], Distance: 1
 	Vertex: 6, Coordinates: [1, 1], Distance: 2
-	Vertex: 7, Coordinates: [1, 2], Distance: 3
+	Vertex: 11, Coordinates: [2, 1], Distance: 3
 	Vertex: 12, Coordinates: [2, 2], Distance: 4
 	Vertex: 13, Coordinates: [2, 3], Distance: 5
 	Vertex: 18, Coordinates: [3, 3], Distance: 6
-	Vertex: 19, Coordinates: [3, 4], Distance: 7
+	Vertex: 23, Coordinates: [4, 3], Distance: 7
 	Vertex: 24, Coordinates: [4, 4], Distance: 8
 	*/
 	path = AStar<Vertex>::shortestPath(graph, 22, 11, heuristic);
@@ -70,7 +70,7 @@ int main() {
 	/*
 	Vertex: 22, Coordinates: [4, 2], Distance: 0
 	Vertex: 17, Coordinates: [3, 2], Distance: 1
-	Vertex: 16, Coordinates: [3, 1], Distance: 2
+	Vertex: 12, Coordinates: [2, 2], Distance: 2
 	Vertex: 11, Coordinates: [2, 1], Distance: 3
 	*/
 	path = AStar<Vertex>::shortestPath(graph, 16, 5, heuristic);
