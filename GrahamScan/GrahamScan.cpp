@@ -1,6 +1,6 @@
 #include "GrahamScan.hpp"
 // O(nlog(n))
-// Find the points that form the convex hull of the given points using Graham's scan algorithm 
+// Find a set of points that form the convex hull of the given points using Graham's scan algorithm 
 std::vector<typename GrahamScan::Point> GrahamScan::convexHull(std::vector<Point>& points) {
 	if (points.size() < 3)
 		throw std::invalid_argument("points.size() should be greater than or equal to 3");

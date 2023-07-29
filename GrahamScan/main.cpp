@@ -3,7 +3,7 @@
 #include <format>
 #include <fstream>
 int main() {
-	// Create a 5x5 grid points. The center point is (0, 0)
+	// Create 5x5 grid points. The center point is (0, 0)
 	std::vector<std::pair<float, float>> points;
 	for (size_t i = 0; i < 5; ++i) {
 		for (size_t j = 0; j < 5; ++j) {
