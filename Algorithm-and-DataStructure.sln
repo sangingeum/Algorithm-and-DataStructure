@@ -47,6 +47,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuickSelect", "QuickSelect\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KDTree", "KDTree\KDTree.vcxproj", "{CB14AE18-2F4A-4742-82D0-201B5FC5E0F7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GrahamScan", "GrahamScan\GrahamScan.vcxproj", "{60930657-C1D8-47BF-AEA0-C0287DB9F959}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -215,6 +217,14 @@ Global
 		{CB14AE18-2F4A-4742-82D0-201B5FC5E0F7}.Release|x64.Build.0 = Release|x64
 		{CB14AE18-2F4A-4742-82D0-201B5FC5E0F7}.Release|x86.ActiveCfg = Release|Win32
 		{CB14AE18-2F4A-4742-82D0-201B5FC5E0F7}.Release|x86.Build.0 = Release|Win32
+		{60930657-C1D8-47BF-AEA0-C0287DB9F959}.Debug|x64.ActiveCfg = Debug|x64
+		{60930657-C1D8-47BF-AEA0-C0287DB9F959}.Debug|x64.Build.0 = Debug|x64
+		{60930657-C1D8-47BF-AEA0-C0287DB9F959}.Debug|x86.ActiveCfg = Debug|Win32
+		{60930657-C1D8-47BF-AEA0-C0287DB9F959}.Debug|x86.Build.0 = Debug|Win32
+		{60930657-C1D8-47BF-AEA0-C0287DB9F959}.Release|x64.ActiveCfg = Release|x64
+		{60930657-C1D8-47BF-AEA0-C0287DB9F959}.Release|x64.Build.0 = Release|x64
+		{60930657-C1D8-47BF-AEA0-C0287DB9F959}.Release|x86.ActiveCfg = Release|Win32
+		{60930657-C1D8-47BF-AEA0-C0287DB9F959}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

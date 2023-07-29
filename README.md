@@ -31,6 +31,8 @@ This repository contains C++ implementations of various algorithms and data stru
 * A* algorithm
 ### Selection Algorithm
 * Quick Select
+### Convex Hull Algorithm
+* Graham Scan
 ## Code Examples
 For each algorithm and data structure, you can find corresponding C++ code example in their respective folder.
 
