@@ -28,11 +28,13 @@ This repository contains C++ implementations of various algorithms and data stru
 * Bellman-Ford Algorithm
 * Shortest Path in a Directed Acyclic Graph(DAG)
 * Dijkstra's Algorirhm
-* A* algorithm
+* A* Algorithm
 ### Selection Algorithm
 * Quick Select
 ### Convex Hull Algorithm
 * Graham Scan
+### String Searching Algorithm
+* Knuth-Morris-Pratt Algorithm
 ## Code Examples
 For each algorithm and data structure, you can find corresponding C++ code example in their respective folder.
 
