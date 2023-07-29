@@ -11,6 +11,7 @@ This repository contains C++ implementations of various algorithms and data stru
 * Binary Search Tree
 * Red Black Tree
 * K-D Tree
+* Segment Tree
 * Graph
   * Adjacency List
   * Adjacency Matrix
