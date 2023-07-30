@@ -30,6 +30,8 @@ This repository contains C++ implementations of various algorithms and data stru
 * Shortest Path in a Directed Acyclic Graph(DAG)
 * Dijkstra's Algorirhm
 * A* Algorithm
+### Dynamic Programming
+* 0/1 Knapsack Problem
 ### Selection Algorithm
 * Quick Select
 ### Convex Hull Algorithm
