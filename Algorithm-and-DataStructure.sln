@@ -65,6 +65,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DynamicProgramming", "Dynam
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0-1Knapsack", "DynamicProgramming\0-1Knapsack\0-1Knapsack.vcxproj", "{7B7BF316-6B18-4CB2-B402-3A428A248398}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LongestIncreasingSubsequence", "DynamicProgramming\LongestIncreasingSubsequence\LongestIncreasingSubsequence.vcxproj", "{0B00A02E-D729-480D-B00C-92AC00E39D78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -265,6 +267,14 @@ Global
 		{7B7BF316-6B18-4CB2-B402-3A428A248398}.Release|x64.Build.0 = Release|x64
 		{7B7BF316-6B18-4CB2-B402-3A428A248398}.Release|x86.ActiveCfg = Release|Win32
 		{7B7BF316-6B18-4CB2-B402-3A428A248398}.Release|x86.Build.0 = Release|Win32
+		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Debug|x64.ActiveCfg = Debug|x64
+		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Debug|x64.Build.0 = Debug|x64
+		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Debug|x86.ActiveCfg = Debug|Win32
+		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Debug|x86.Build.0 = Debug|Win32
+		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Release|x64.ActiveCfg = Release|x64
+		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Release|x64.Build.0 = Release|x64
+		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Release|x86.ActiveCfg = Release|Win32
+		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -294,6 +304,7 @@ Global
 		{E821280A-E88D-4C5B-9DC1-7D7E5DAA1148} = {1830A892-4FCF-489D-87DF-D8F4B5465E2B}
 		{83B6EC1E-0331-44E2-805A-1E6C5477094C} = {595A4D4E-0734-49F4-8C63-087EA0908EF1}
 		{7B7BF316-6B18-4CB2-B402-3A428A248398} = {9551481B-BCA5-498F-8A64-AD9E353B79A6}
+		{0B00A02E-D729-480D-B00C-92AC00E39D78} = {9551481B-BCA5-498F-8A64-AD9E353B79A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA13872F-676D-4C25-9FE7-5F4F190C5827}
