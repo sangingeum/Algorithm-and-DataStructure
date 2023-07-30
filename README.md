@@ -34,6 +34,7 @@ This repository contains C++ implementations of various algorithms and data stru
 * 0/1 Knapsack Problem
 * Longest Increasing Subsequence(LIS)
 * Rod Cutting
+* Levenshtein Distance
 ### Selection Algorithm
 * Quick Select
 ### Convex Hull Algorithm
