@@ -67,6 +67,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0-1Knapsack", "DynamicProgr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LongestIncreasingSubsequence", "DynamicProgramming\LongestIncreasingSubsequence\LongestIncreasingSubsequence.vcxproj", "{0B00A02E-D729-480D-B00C-92AC00E39D78}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RodCutting", "DynamicProgramming\RodCutting\RodCutting.vcxproj", "{5BEC753F-E318-43F0-8754-C2B10D0DD16C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -275,6 +277,14 @@ Global
 		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Release|x64.Build.0 = Release|x64
 		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Release|x86.ActiveCfg = Release|Win32
 		{0B00A02E-D729-480D-B00C-92AC00E39D78}.Release|x86.Build.0 = Release|Win32
+		{5BEC753F-E318-43F0-8754-C2B10D0DD16C}.Debug|x64.ActiveCfg = Debug|x64
+		{5BEC753F-E318-43F0-8754-C2B10D0DD16C}.Debug|x64.Build.0 = Debug|x64
+		{5BEC753F-E318-43F0-8754-C2B10D0DD16C}.Debug|x86.ActiveCfg = Debug|Win32
+		{5BEC753F-E318-43F0-8754-C2B10D0DD16C}.Debug|x86.Build.0 = Debug|Win32
+		{5BEC753F-E318-43F0-8754-C2B10D0DD16C}.Release|x64.ActiveCfg = Release|x64
+		{5BEC753F-E318-43F0-8754-C2B10D0DD16C}.Release|x64.Build.0 = Release|x64
+		{5BEC753F-E318-43F0-8754-C2B10D0DD16C}.Release|x86.ActiveCfg = Release|Win32
+		{5BEC753F-E318-43F0-8754-C2B10D0DD16C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -305,6 +315,7 @@ Global
 		{83B6EC1E-0331-44E2-805A-1E6C5477094C} = {595A4D4E-0734-49F4-8C63-087EA0908EF1}
 		{7B7BF316-6B18-4CB2-B402-3A428A248398} = {9551481B-BCA5-498F-8A64-AD9E353B79A6}
 		{0B00A02E-D729-480D-B00C-92AC00E39D78} = {9551481B-BCA5-498F-8A64-AD9E353B79A6}
+		{5BEC753F-E318-43F0-8754-C2B10D0DD16C} = {9551481B-BCA5-498F-8A64-AD9E353B79A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA13872F-676D-4C25-9FE7-5F4F190C5827}
