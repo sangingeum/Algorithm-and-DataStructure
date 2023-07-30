@@ -43,11 +43,11 @@ T SegmentTree<Merger, T>::query(size_t from, size_t to) {
 	T result = m_merger.getInitialValue();
 
 	while (from < to) {
-		if (from % 2 == 1) {
+		if ((from & 1) == 1) { // Check if from is odd
 			result = m_mergeFunction(result, m_tree[from]);
 			from++;
 		}
-		if (to % 2 == 1) {
+		if ((to & 1) == 1) {
 			to--;
 			result = m_mergeFunction(result, m_tree[to]);
 		}
