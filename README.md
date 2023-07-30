@@ -32,6 +32,7 @@ This repository contains C++ implementations of various algorithms and data stru
 * A* Algorithm
 ### Dynamic Programming
 * 0/1 Knapsack Problem
+* Longest Increasing Subsequence(LIS)
 ### Selection Algorithm
 * Quick Select
 ### Convex Hull Algorithm
