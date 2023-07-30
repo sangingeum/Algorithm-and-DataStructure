@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{2f9c42c7-6a38-4827-858f-ad2d475da0a1}</ProjectGuid>
-    <RootNamespace>QuickSelect</RootNamespace>
+    <ProjectGuid>{22b776c5-c6d5-449d-9203-3d4f2ed4499e}</ProjectGuid>
+    <RootNamespace>BellmanFord</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -104,8 +104,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)/DataStructure/Graph</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)/QuickSort</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,12 +129,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\QuickSort\Partition.cpp" />
+    <ClCompile Include="BellmanFord.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="QuickSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="QuickSelect.hpp" />
+    <ClInclude Include="BellmanFord.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

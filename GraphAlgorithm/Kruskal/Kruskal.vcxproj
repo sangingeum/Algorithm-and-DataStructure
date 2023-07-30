@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{1b95416d-243f-4efe-b2bd-efe2aaa45e92}</ProjectGuid>
-    <RootNamespace>DAGShortestPath</RootNamespace>
+    <ProjectGuid>{1f8b1fce-8249-408c-a3a6-fc54ea5c91b7}</ProjectGuid>
+    <RootNamespace>Kruskal</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -104,8 +104,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Graph;$(SolutionDir)/TopologicalSort</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)/DataStructure/Graph;$(SolutionDir)/DataStructure/DisjointSet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,10 +129,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DAGShortestPath.hpp" />
+    <ClInclude Include="Kruskal.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DAGShortestPath.cpp" />
+    <ClCompile Include="..\..\DataStructure\DisjointSet\DisjointSet.cpp" />
+    <ClCompile Include="Kruskal.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

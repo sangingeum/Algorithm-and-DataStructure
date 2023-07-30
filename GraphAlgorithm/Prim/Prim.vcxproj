@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{1ed0f3bd-8577-4eed-be2b-5b35d32e30de}</ProjectGuid>
-    <RootNamespace>AStar</RootNamespace>
+    <ProjectGuid>{224d4ecd-463c-466d-9880-571032f83476}</ProjectGuid>
+    <RootNamespace>Prim</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -104,8 +104,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)/DataStructure/Graph;$(SolutionDir)/DataStructure/PriorityQueue</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Graph;$(SolutionDir)/PriorityQueue</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,11 +129,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AStar.hpp" />
+    <ClInclude Include="Prim.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AStar.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Prim.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

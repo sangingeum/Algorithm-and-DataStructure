@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e821280a-e88d-4c5b-9dc1-7d7e5daa1148}</ProjectGuid>
-    <RootNamespace>TopologicalSort</RootNamespace>
+    <ProjectGuid>{c17a23c1-edfd-4e2e-8bbc-fafd616ebf95}</ProjectGuid>
+    <RootNamespace>Dijkstra</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -104,8 +104,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Graph</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)/DataStructure/Graph;$(SolutionDir)/DataStructure/PriorityQueue</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,11 +129,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="TopologicalSort.cpp" />
+    <ClInclude Include="Dijkstra.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TopologicalSort.hpp" />
+    <ClCompile Include="Dijkstra.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
