@@ -33,6 +33,7 @@ This repository contains C++ implementations of various algorithms and data stru
 ### Dynamic Programming
 * 0/1 Knapsack Problem
 * Longest Increasing Subsequence(LIS)
+* Longest Common Subsequence(LCS)
 * Rod Cutting
 * Levenshtein Distance
 ### Selection Algorithm
