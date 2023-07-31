@@ -35,6 +35,7 @@ This repository contains C++ implementations of various algorithms and data stru
 * Longest Increasing Subsequence(LIS)
 * Longest Common Subsequence(LCS)
 * Rod Cutting
+* Coin Change
 * Levenshtein Distance
 ### Selection Algorithm
 * Quick Select
