@@ -1,6 +1,6 @@
 #pragma once
 #include "AdjacencyListGraph.hpp"
-#include "MinPriorityQueue.hpp"
+#include "BinaryMinHeap.hpp"
 #include <limits>
 #include <functional>
 
@@ -36,7 +36,7 @@ std::vector<std::pair<size_t, float>> AStar<Vertex>::shortestPath(AdjacencyListG
 	initialize(graph, from, to);
 
 	// Create a minQ that stores vetices
-	MinPriorityQueue<size_t> minQ;
+	BinaryMinHeap<size_t> minQ;
 	minQ.push(graph.getVertexAttribute(from).fScore, from);
 
 	// Make a visited vector to prevent redundant calulations

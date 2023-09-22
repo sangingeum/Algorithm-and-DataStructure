@@ -1,5 +1,5 @@
-#include "MaxPriorityQueue.hpp"
-#include "MinPriorityQueue.hpp"
+#include "BinaryMaxHeap.hpp"
+#include "BinaryMinHeap.hpp"
 #include <iostream>
 #include <format>
 struct Data {
@@ -9,7 +9,7 @@ struct Data {
 
 int main() {
 	// Create a priority queue and push elements to it
-	MaxPriorityQueue<Data> q;
+	BinaryMaxHeap<Data> q;
 	q.push(3.4f, { 0, 10 });
 	q.push(7.f, { 1, 96 });
 	q.push(3.f, { 2, 42});

@@ -1,6 +1,6 @@
 #pragma once
 #include "AdjacencyListGraph.hpp"
-#include "MinPriorityQueue.hpp"
+#include "BinaryMinHeap.hpp"
 #include <limits>
 
 /* Example Vertex
@@ -16,7 +16,7 @@ class Dijkstra
 public:
 	static AdjacencyListGraph<Vertex> singleSourceShortestPath(AdjacencyListGraph<Vertex>& graph, size_t source);
 private:
-	static void initialize(AdjacencyListGraph<Vertex>& graph, size_t source, MinPriorityQueue<size_t>& minQ);
+	static void initialize(AdjacencyListGraph<Vertex>& graph, size_t source, BinaryMinHeap<size_t>& minQ);
 };
 
 // Given a graph with positive edges and a source vertex,
@@ -25,7 +25,7 @@ private:
 template <class Vertex>
 AdjacencyListGraph<Vertex> Dijkstra<Vertex>::singleSourceShortestPath(AdjacencyListGraph<Vertex>& graph, size_t source) {
 	size_t numVertices = graph.getNumVertices();
-	MinPriorityQueue<size_t> minQ;
+	BinaryMinHeap<size_t> minQ;
 	// Initialize the min priority queue and the graph;
 	initialize(graph, source, minQ);
 	
@@ -74,7 +74,7 @@ AdjacencyListGraph<Vertex> Dijkstra<Vertex>::singleSourceShortestPath(AdjacencyL
 }
 
 template <class Vertex>
-void Dijkstra<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph, size_t source, MinPriorityQueue<size_t>& minQ) {
+void Dijkstra<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph, size_t source, BinaryMinHeap<size_t>& minQ) {
 	size_t numVertices = graph.getNumVertices();
 	auto& vertextAtts = graph.getVertexAttributes();
 	for (auto& att : vertextAtts) {

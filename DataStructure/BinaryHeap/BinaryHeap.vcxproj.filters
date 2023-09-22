@@ -20,10 +20,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MaxPriorityQueue.hpp">
+    <ClInclude Include="BinaryMaxHeap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MinPriorityQueue.hpp">
+    <ClInclude Include="BinaryMinHeap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

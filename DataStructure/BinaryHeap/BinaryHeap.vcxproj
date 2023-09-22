@@ -24,6 +24,7 @@
     <ProjectGuid>{2f08c07f-d7d6-466e-8294-8441033d08fa}</ProjectGuid>
     <RootNamespace>PriorityQueue</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>BinaryHeap</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -131,8 +132,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MinPriorityQueue.hpp" />
-    <ClInclude Include="MaxPriorityQueue.hpp" />
+    <ClInclude Include="BinaryMinHeap.hpp" />
+    <ClInclude Include="BinaryMaxHeap.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

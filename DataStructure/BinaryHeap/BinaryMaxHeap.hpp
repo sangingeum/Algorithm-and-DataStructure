@@ -3,7 +3,7 @@
 #include <utility>
 
 template<class T>
-class MaxPriorityQueue
+class BinaryMaxHeap
 {
 public:
 	// Time complexity: O(1)
@@ -34,12 +34,12 @@ private:
 
 
 template<class T>
-std::pair<float, T> MaxPriorityQueue<T>::front() {
+std::pair<float, T> BinaryMaxHeap<T>::front() {
 	return m_array[0];
 }
 
 template<class T>
-void MaxPriorityQueue<T>::pop() {
+void BinaryMaxHeap<T>::pop() {
 	std::swap(m_array.front(), m_array.back());
 	m_array.pop_back();
 	if(!empty())
@@ -47,12 +47,12 @@ void MaxPriorityQueue<T>::pop() {
 }
 
 template<class T>
-bool MaxPriorityQueue<T>::empty() const {
+bool BinaryMaxHeap<T>::empty() const {
 	return m_array.empty();
 }
 
 template<class T>
-void MaxPriorityQueue<T>::push(float p, T element) {
+void BinaryMaxHeap<T>::push(float p, T element) {
 	m_array.emplace_back(p, element);
 	size_t curIndex = m_array.size() - 1;
 	while (curIndex != 0) {
@@ -64,7 +64,7 @@ void MaxPriorityQueue<T>::push(float p, T element) {
 	}
 }
 template<class T>
-void MaxPriorityQueue<T>::heapify(size_t index) {
+void BinaryMaxHeap<T>::heapify(size_t index) {
 	size_t heapSize = m_array.size() - 1;
 	auto curP = m_array[index].first;
 	auto leftIndex = left(index);
@@ -80,14 +80,14 @@ void MaxPriorityQueue<T>::heapify(size_t index) {
 	}
 }
 template<class T>
-inline size_t MaxPriorityQueue<T>::left(size_t parent) {
+inline size_t BinaryMaxHeap<T>::left(size_t parent) {
 	return (parent << 1) + 1;
 }
 template<class T>
-inline size_t MaxPriorityQueue<T>::right(size_t parent) {
+inline size_t BinaryMaxHeap<T>::right(size_t parent) {
 	return (parent << 1) + 2;
 }
 template<class T>
-inline size_t MaxPriorityQueue<T>::parent(size_t child) {
+inline size_t BinaryMaxHeap<T>::parent(size_t child) {
 	return (child - 1) >> 1;
 }

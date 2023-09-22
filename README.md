@@ -6,8 +6,8 @@ This repository contains C++ implementations of various algorithms and data stru
 ## Implementation
 
 ### Data Structure
-* Priority Queue
 * Hash Table
+* Binary Heap
 * Binary Search Tree
 * Red Black Tree
 * K-D Tree

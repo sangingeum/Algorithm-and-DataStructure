@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/DataStructure/Graph;$(SolutionDir)/DataStructure/PriorityQueue</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/DataStructure/Graph;$(SolutionDir)/DataStructure/BinaryHeap</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>

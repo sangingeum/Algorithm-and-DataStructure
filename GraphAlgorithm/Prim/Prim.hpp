@@ -1,5 +1,5 @@
 #pragma once
-#include "MinPriorityQueue.hpp"
+#include "BinaryMinHeap.hpp"
 #include "AdjacencyListGraph.hpp"
 #include <limits>
 
@@ -31,9 +31,9 @@ AdjacencyListGraph<Vertex> Prim<Vertex>::minimumSpanningTree(AdjacencyListGraph<
 	// Initialize the graph
 	initialize(graph);
 
-	// Make a MinPriorityQueue that stores vertices based on their keys
+	// Make a BinaryMinHeap that stores vertices based on their keys
 	// The initial key value for all vertices is set to infinity
-	MinPriorityQueue<size_t> vertexQ;
+	BinaryMinHeap<size_t> vertexQ;
 	for (size_t i = 0; i < numVertices; ++i) {
 		vertexQ.push(std::numeric_limits<float>::max(), i);
 	}
