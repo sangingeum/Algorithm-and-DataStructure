@@ -22,7 +22,8 @@ int main() {
 	QuickSort<Partition> basicQS;
 	QuickSort<RandomizedPartition> randomizedQS;
 	QuickSort<MedianOfThreePartition> medianOfThreeQS;
-	
+	QuickSort<RandomMedianOfThreePartition> randomMedianOfThreeQS;
+
 	// Print the original unsorted vector
 	printVec(vec);
 	
@@ -39,6 +40,11 @@ int main() {
 	// Sort and print the vector
 	copy = vec;
 	medianOfThreeQS.sort(copy);
+	printVec(copy);
+
+	// Sort and print the vector
+	copy = vec;
+	randomMedianOfThreeQS.sort(copy);
 	printVec(copy);
 
 	return 0;

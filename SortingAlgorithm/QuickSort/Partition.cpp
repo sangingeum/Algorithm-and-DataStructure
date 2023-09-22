@@ -21,7 +21,7 @@ size_t RandomizedPartition::partition(std::vector<int>& arr, size_t p, size_t r)
 }
 
 // Pick a median pivot among three randomly selected pivots
-size_t MedianOfThreePartition::partition(std::vector<int>& arr, size_t p, size_t r) {
+size_t RandomMedianOfThreePartition::partition(std::vector<int>& arr, size_t p, size_t r) {
 	size_t randomIndex1 = (rand() % (r - p + 1)) + p;
 	size_t randomIndex2 = (rand() % (r - p + 1)) + p;
 	size_t randomIndex3 = (rand() % (r - p + 1)) + p;
@@ -34,6 +34,20 @@ size_t MedianOfThreePartition::partition(std::vector<int>& arr, size_t p, size_t
 		medianIndex = randomIndex1;
 	else
 		medianIndex = randomIndex3;
+	std::swap(arr[medianIndex], arr[r]);
+	return Partition::partition(arr, p, r);
+}
+
+
+size_t MedianOfThreePartition::partition(std::vector<int>& arr, size_t p, size_t r) {
+	size_t mid = (p + r) / 2;
+	size_t medianIndex;
+	if ((arr[p] < arr[mid] && arr[mid] < arr[r]) || (arr[r] < arr[mid] && arr[mid] < arr[p]))
+		medianIndex = mid;
+	else if ((arr[mid] < arr[p] && arr[p] < arr[r]) || (arr[r] < arr[p] && arr[p] < arr[mid]))
+		medianIndex = p;
+	else
+		medianIndex = r;
 	std::swap(arr[medianIndex], arr[r]);
 	return Partition::partition(arr, p, r);
 }
