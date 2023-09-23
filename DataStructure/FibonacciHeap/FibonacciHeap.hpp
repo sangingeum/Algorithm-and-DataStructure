@@ -6,7 +6,7 @@
 #include <iostream>
 #include <format>
 #include <string>
-
+#include <limits>
 
 // FibonacciHeap Implemented in C++ 
 template <class D>
@@ -17,21 +17,31 @@ private:
 		uint32_t degree{ 0 };
 		float key;
 		D data;
-		bool mark{ false };
+		bool marked{ false };
 		Node* parent{ nullptr };
 		Node* left{ this };
 		Node* right{ this };
 		Node* child{ nullptr };
 		Node(float key_, D data_) : key(key_), data(std::move(data_)){}
 	};
+
 	Node* m_top;
 	size_t m_size{ 0 };
 public:
+	class Handle {
+	private:
+		Node* ptr;
+		friend FibonacciHeap;
+	public:
+		Handle(Node* ptr_) : ptr(ptr_) {}
+	};
 	FibonacciHeap() = default;
 	~FibonacciHeap() { 
 		if(m_top) recursiveFree(m_top);
 	}
-	void push(float key, D data) {
+
+	// The returned handle can be used for the decrease key and the remove methods
+	Handle push(float key, D data) {
 		Node* node = new Node(key, std::move(data));
 		if (m_top) { // heap is not empty
 			appendToRootList(node);
@@ -43,7 +53,9 @@ public:
 			m_top = node;
 		}
 		++m_size;
+		return Handle(node);
 	}
+
 	D top() {
 		return m_top->data;
 	}
@@ -64,7 +76,7 @@ public:
 				}
 			}
 			// Remove oldTop from the root list
-			removeFromRootList(oldTop);
+			removeFromList(oldTop);
 			// If oldTop is the last node
 			if (oldTop == oldTop->right) {
 				m_top = nullptr;
@@ -79,21 +91,66 @@ public:
 			delete oldTop;
 		}
 	}
-	//bool empty();
-	//bool remove(D item);
-	//bool decreaseKey(D item, float newKey);
+	bool empty() {
+		return m_top == nullptr;
+	}
+	size_t size() {
+		return m_size;
+	}
+	void clear() {
+		if (m_top) {
+			recursiveFree(m_top);
+			m_top = nullptr;
+		}
+	}
+	void remove(Handle handle){
+		decreaseKey(handle, std::numeric_limits<float>::lowest());
+		pop();
+	}
+	bool decreaseKey(Handle handle, float newKey) {
+		Node* node = handle.ptr;
+		if (node->key > newKey) {
+			node->key = newKey;
+			auto parent = node->parent;
+			if (parent && parent->key > newKey) {
+				cut(parent, node);
+				cascadingCut(parent);
+			}
+			if (newKey < m_top->key) {
+				m_top = node;
+			}
+
+			return true;
+		}
+		return false;
+	}
+
+	
 	void merge(FibonacciHeap<D>& other) {
 		if (other.m_top) {
 			if (m_top) {
-				appendToList(m_top, other.m_top);
+				std::vector<Node*> rootList;
+				auto cur = other.m_top;
+				if (cur) {
+					while (true) {
+						rootList.push_back(cur);
+						cur = cur->left;
+						if (cur == other.m_top)
+							break;
+					}
+				}
+				for(auto& node : rootList)
+					appendToRootList(node);
+
 				if (other.m_top->key < m_top->key) {
-					m_top = std::move(other.m_top);
+					m_top = other.m_top;
 				}
 			}
 			else {
-				m_top = std::move(other.m_top);
+				m_top = other.m_top;
 			}
 			m_size += other.m_size;
+			other.m_top = nullptr;
 			other.m_size = 0;
 		}
 	}
@@ -138,6 +195,7 @@ private:
 	// This function assumes that top is not null
 	void appendToRootList(Node* node) {
 		node->parent = nullptr;
+		node->marked = false;
 		node->left = m_top->left;
 		node->right = m_top;
 		m_top->left->right = node;
@@ -152,7 +210,7 @@ private:
 	}
 
 	//
-	void removeFromRootList(Node* node) {
+	void removeFromList(Node* node) {
 		node->right->left = node->left;
 		node->left->right = node->right;
 	}
@@ -213,12 +271,12 @@ private:
 		else
 			parent->child = toBeChild;
 		toBeChild->parent = parent;
-		toBeChild->mark = false;
+		toBeChild->marked = false;
 		++(parent->degree);
 	}
 
 	void heapLink(Node* parent, Node* toBeChild) {
-		removeFromRootList(toBeChild);
+		removeFromList(toBeChild);
 		childification(parent, toBeChild);
 	}
 
@@ -230,6 +288,30 @@ private:
 			auto left = node->left;
 			delete node;
 			node = left;
+		}
+	}
+
+	void cut(Node* parent, Node* child) {
+		if (parent->child == child) {
+			if (child->right == child)
+				parent->child = nullptr;
+			else
+				parent->child = child->right;
+		}
+		removeFromList(child);
+		--(parent->degree);
+		appendToRootList(child);
+	}
+	void cascadingCut(Node* node) {
+		auto parent = node->parent;
+		if (parent) {
+			if (node->marked) {
+				cut(parent, node);
+				cascadingCut(parent);
+			}
+			else {
+				node->marked = true;
+			}
 		}
 	}
 
