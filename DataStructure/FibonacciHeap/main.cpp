@@ -4,7 +4,6 @@
 #include <format>
 #include <vector>
 #include <random>
-#include <unordered_map>
 #include <cassert>
 
 struct Student {
