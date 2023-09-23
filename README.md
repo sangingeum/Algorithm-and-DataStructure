@@ -8,6 +8,7 @@ This repository contains C++ implementations of various algorithms and data stru
 ### Data Structure
 * Hash Table
 * Binary Heap
+* Fibonacci Heap
 * Binary Search Tree
 * Red Black Tree
 * K-D Tree
