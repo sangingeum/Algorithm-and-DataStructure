@@ -26,10 +26,7 @@ private:
 	size_t m_size{ 0 };
 public:
 	FibonacciHeap() = default;
-	~FibonacciHeap() { 
-	if(m_top) recursiveFree(m_top);
-	std::cout << "hu";
-	}
+	~FibonacciHeap() { if(m_top) recursiveFree(m_top);}
 	void push(float key, D data) {
 		Node* node = new Node(key, std::move(data));
 		if (m_top) { // heap is not empty
@@ -43,7 +40,7 @@ public:
 		}
 		++m_size;
 	}
-	D front() {
+	D top() {
 		return m_top->data;
 	}
 	// Extract-Min

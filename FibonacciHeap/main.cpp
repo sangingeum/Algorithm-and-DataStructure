@@ -1,29 +1,61 @@
 #include "FibonacciHeap.hpp"
 #include <iostream>
+#include <queue>
 #include <format>
+#include <vector>
+#include <random>
+
+
 struct Student {
-	size_t id{ 0 };
-	float grade{ 0 };
+	int id{ 0 };
+	int grade{ 0 };
 };
+
+bool operator<(const Student& lhs, const Student& rhs) {
+	return lhs.id > rhs.id;
+}
 
 
 int main() {
+	// Compare my FibonacciHeap and the standard priority queue to check if my heap operates correctly
 	FibonacciHeap<Student> heap;
-	for (size_t i = 0; i < 200; ++i) {
-		heap.push(100 - 5 * i, { 100-5*i, 100.0f - 5 * i });
-		auto front = heap.front();
-		std::cout << std::format("id: {}, grade: {}\n", front.id, front.grade);
+	std::priority_queue<Student> priorityQ;
+	std::vector<int> fromHeap; fromHeap.reserve(20000);
+	std::vector<int> fromPQ; fromPQ.reserve(20000);
+
+	// Make a random vector of length 10000.
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<int> dist(-10000, 10000); // Change the range as needed
+	std::vector<int> randomVector(10000);
+	std::generate(randomVector.begin(), randomVector.end(), [&gen, &dist]() { return dist(gen);});
+	// Push 10000 items into each queue.
+	for (int i = 0; i < 10000; ++i) {
+		auto random = randomVector[i];
+		heap.push(random, { random, random });
+		priorityQ.push({ random, random });
+		
+		// Store the result of the top() function
+		fromHeap.push_back(heap.top().id);
+		fromPQ.push_back(priorityQ.top().id);
 	}
-	
-	for (size_t i = 0; i < 100; ++i) {
-		auto front = heap.front();
-		std::cout << std::format("id: {}, grade: {}\n", front.id, front.grade);
-		//std::cout << "----------------------------\n";
-		//heap.print();
-		//std::cout << "----------------------------\n";
+
+	// Pop 10000 items from each queue
+	for (size_t i = 0; i < 10000; ++i) {
+
+		// Store the result of the top() function
+		fromHeap.push_back(heap.top().id);
+		fromPQ.push_back(priorityQ.top().id);
+
+		// Pop an item
 		heap.pop();
+		priorityQ.pop();
 	}
 
+	// Check if both vectors are the same
+	std::cout << ((fromHeap == fromPQ) ? "Same" : "Different") << "\n";
 
+	// Reseult:
+	// Same
 	return 0;
 }
