@@ -20,17 +20,17 @@ int main() {
 	// Compare my FibonacciHeap and the standard priority queue to check if my heap operates correctly
 	FibonacciHeap<Student> heap;
 	std::priority_queue<Student> priorityQ;
-	std::vector<int> fromHeap; fromHeap.reserve(20000);
-	std::vector<int> fromPQ; fromPQ.reserve(20000);
+	std::vector<int> fromHeap; fromHeap.reserve(30000);
+	std::vector<int> fromPQ; fromPQ.reserve(30000);
 
-	// Make a random vector of length 10000.
+	// Make a random vector of length 20000.
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<int> dist(-10000, 10000); // Change the range as needed
-	std::vector<int> randomVector(10000);
+	std::vector<int> randomVector(20000);
 	std::generate(randomVector.begin(), randomVector.end(), [&gen, &dist]() { return dist(gen);});
-	// Push 10000 items into each queue.
-	for (int i = 0; i < 10000; ++i) {
+	// Push 20000 items into each queue.
+	for (int i = 0; i < 20000; ++i) {
 		auto random = randomVector[i];
 		heap.push(random, { random, random });
 		priorityQ.push({ random, random });

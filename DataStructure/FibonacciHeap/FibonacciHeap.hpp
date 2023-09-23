@@ -7,6 +7,8 @@
 #include <format>
 #include <string>
 
+
+// FibonacciHeap Implemented in C++ 
 template <class D>
 class FibonacciHeap
 {
@@ -26,7 +28,9 @@ private:
 	size_t m_size{ 0 };
 public:
 	FibonacciHeap() = default;
-	~FibonacciHeap() { if(m_top) recursiveFree(m_top);}
+	~FibonacciHeap() { 
+		if(m_top) recursiveFree(m_top);
+	}
 	void push(float key, D data) {
 		Node* node = new Node(key, std::move(data));
 		if (m_top) { // heap is not empty
