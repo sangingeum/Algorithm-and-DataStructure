@@ -12,6 +12,13 @@ struct Vertex {
 };
 */
 
+
+// Note:
+// By tweaking the heuristic function, you can make it act like an UCS(uniform cost search) or a Greedy BeFS(greedy best-first search) algorithm.
+// f(n) = g(n) +  h(n) -> A*
+// f(n) = g(n) +  0    -> UCS
+// f(n) =   0  +  h(n) -> GBeFS
+
 template <class Vertex>
 class AStar
 {

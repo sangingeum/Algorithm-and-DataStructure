@@ -132,7 +132,6 @@
     <ClInclude Include="DAGShortestPath.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DAGShortestPath.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

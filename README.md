@@ -30,7 +30,7 @@ This repository contains C++ implementations of various algorithms and data stru
 * Bellman-Ford Algorithm
 * Shortest Path in a Directed Acyclic Graph(DAG)
 * Dijkstra's Algorirhm
-* A* Algorithm
+* A* Algorithm (```UCS```<---```Weighted A*```--->```Greedy BeFS``` depending on the ```heuristic``` function)
 ### Dynamic Programming
 * 0/1 Knapsack Problem
 * Longest Increasing Subsequence(LIS)
