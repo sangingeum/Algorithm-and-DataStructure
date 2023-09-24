@@ -23,7 +23,7 @@ private:
 	};
 
 	// Private members
-	Node* m_top;
+	Node* m_top{ nullptr };
 	size_t m_size{ 0 };
 public:
 	// Handle class for the remove and decreaseKey operations
@@ -32,7 +32,8 @@ public:
 		Node* ptr;
 		friend FibonacciHeap;
 	public:
-		Handle(Node* ptr_) : ptr(ptr_) {}
+		Handle(Node* ptr_ = nullptr) : ptr(ptr_) {}
+		bool isNull() { return ptr == nullptr; }
 	};
 
 	// Constructor & Destructor
