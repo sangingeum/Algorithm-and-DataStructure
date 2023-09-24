@@ -1,6 +1,6 @@
 #pragma once
 #include "AdjacencyListGraph.hpp"
-#include "BinaryMinHeap.hpp"
+#include "FibonacciHeap.hpp"
 #include <limits>
 
 /* Example Vertex
@@ -16,7 +16,7 @@ class Dijkstra
 public:
 	static AdjacencyListGraph<Vertex> singleSourceShortestPath(AdjacencyListGraph<Vertex>& graph, size_t source);
 private:
-	static void initialize(AdjacencyListGraph<Vertex>& graph, size_t source, BinaryMinHeap<size_t>& minQ);
+	static void initialize(AdjacencyListGraph<Vertex>& graph, size_t source, FibonacciHeap<size_t>& minQ);
 };
 
 // Given a graph with positive edges and a source vertex,
@@ -25,15 +25,16 @@ private:
 template <class Vertex>
 AdjacencyListGraph<Vertex> Dijkstra<Vertex>::singleSourceShortestPath(AdjacencyListGraph<Vertex>& graph, size_t source) {
 	size_t numVertices = graph.getNumVertices();
-	BinaryMinHeap<size_t> minQ;
+	FibonacciHeap<size_t> minQ;
 	// Initialize the min priority queue and the graph;
 	initialize(graph, source, minQ);
 	
 	// Extract a vertex with the minimum distance from the min priority queue
 	// and relax adjacent vertices
 	std::vector<bool> visited(numVertices, false);
+	std::vector<FibonacciHeap<size_t>::Handle> handles(numVertices);
 	while (!minQ.empty()) {
-		auto [key, u] = minQ.front(); minQ.pop();
+		auto u = minQ.top(); minQ.pop();
 		if (!visited[u]) {
 			visited[u] = true;
 			// Relax(u, v) for all edges adjacent to u
@@ -50,8 +51,11 @@ AdjacencyListGraph<Vertex> Dijkstra<Vertex>::singleSourceShortestPath(AdjacencyL
 					vAtt.distance = uAtt.distance + edgeAtts[i];
 					vAtt.weightToParent = edgeAtts[i];
 					vAtt.parent = u;
-					// Push newly updated vertex v
-					minQ.push(vAtt.distance, v);
+					// Update or push vertex v
+					if (handles[v].isNull())
+						handles[v] = minQ.push(vAtt.distance, v);
+					else
+						minQ.decreaseKey(handles[v], vAtt.distance);
 				}
 			}
 		}
@@ -74,7 +78,7 @@ AdjacencyListGraph<Vertex> Dijkstra<Vertex>::singleSourceShortestPath(AdjacencyL
 }
 
 template <class Vertex>
-void Dijkstra<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph, size_t source, BinaryMinHeap<size_t>& minQ) {
+void Dijkstra<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph, size_t source, FibonacciHeap<size_t>& minQ) {
 	size_t numVertices = graph.getNumVertices();
 	auto& vertextAtts = graph.getVertexAttributes();
 	for (auto& att : vertextAtts) {

@@ -1,6 +1,6 @@
 #pragma once
 #include "AdjacencyListGraph.hpp"
-#include "BinaryMinHeap.hpp"
+#include "FibonacciHeap.hpp"
 #include <limits>
 #include <functional>
 
@@ -31,20 +31,23 @@ private:
 template <class Vertex>
 std::vector<std::pair<size_t, float>> AStar<Vertex>::shortestPath(AdjacencyListGraph<Vertex>& graph, size_t from, size_t to,
 	std::function<float(const std::pair<float, float>&, const std::pair<float, float>&)> heuristic) {
-	size_t numVetices = graph.getNumVertices();
+	size_t numVertices = graph.getNumVertices();
 	// Initialize the graph's gScroes, fScores, and parents
 	initialize(graph, from, to);
 
 	// Create a minQ that stores vetices
-	BinaryMinHeap<size_t> minQ;
+	FibonacciHeap<size_t> minQ;
 	minQ.push(graph.getVertexAttribute(from).fScore, from);
 
+	// Create a vector for storing handles
+	std::vector<FibonacciHeap<size_t>::Handle> handles(numVertices);
+
 	// Make a visited vector to prevent redundant calulations
-	std::vector<bool> visited(numVetices, false);
+	std::vector<bool> visited(numVertices, false);
 	auto& goalAtt = graph.getVertexAttribute(to);
 
 	while (!minQ.empty()) {
-		auto [fScore, cur] = minQ.front(); minQ.pop();
+		auto cur = minQ.top(); minQ.pop();
 		if (cur == to) {
 			// Found the target. Stop searching
 			break;
@@ -67,7 +70,11 @@ std::vector<std::pair<size_t, float>> AStar<Vertex>::shortestPath(AdjacencyListG
 					neighborAtt.fScore = tentativeGScore + heuristic(neighborAtt.pos, goalAtt.pos);
 					// Push the neighbor to the minQ with neighbor's fScore as a key
 					// Min priority queue selects the next vertex based on the fScore which is the sum of the gScore and the hScore.
-					minQ.push(neighborAtt.fScore, neighbor);
+					if (handles[neighbor].isNull())
+						handles[neighbor] = minQ.push(neighborAtt.fScore, neighbor);
+					else
+						minQ.decreaseKey(handles[neighbor], neighborAtt.fScore);
+
 				}
 			}
 		}
@@ -76,7 +83,7 @@ std::vector<std::pair<size_t, float>> AStar<Vertex>::shortestPath(AdjacencyListG
 	// Construct the path using the vertex attributes calculated above
 	std::vector<std::pair<size_t, float>> path;
 	size_t cur = to;
-	while (cur < numVetices) {
+	while (cur < numVertices) {
 		auto& att = graph.getVertexAttribute(cur);
 		path.push_back({ cur, att.gScore });
 		cur = att.parent;

@@ -1,5 +1,5 @@
 #pragma once
-#include "BinaryMinHeap.hpp"
+#include "FibonacciHeap.hpp"
 #include "AdjacencyListGraph.hpp"
 #include <limits>
 
@@ -33,17 +33,19 @@ AdjacencyListGraph<Vertex> Prim<Vertex>::minimumSpanningTree(AdjacencyListGraph<
 
 	// Make a BinaryMinHeap that stores vertices based on their keys
 	// The initial key value for all vertices is set to infinity
-	BinaryMinHeap<size_t> vertexQ;
+	FibonacciHeap<size_t> vertexQ;
 	for (size_t i = 0; i < numVertices; ++i) {
 		vertexQ.push(std::numeric_limits<float>::max(), i);
 	}
+	// Create a vector for storing handles
+	std::vector<FibonacciHeap<size_t>::Handle> handles(numVertices);
 
 	// Every vertex should be visited only once
 	std::vector<bool> visited(numVertices, false);
 	// Perform the Prim's algorithm until all vertices are visited
 	while (!vertexQ.empty()) {
 		// Extract a vertex with the minimum key
-		auto [key, cur] = vertexQ.front(); vertexQ.pop();
+		auto cur = vertexQ.top(); vertexQ.pop();
 		if (!visited[cur]) {
 			visited[cur] = true;
 			auto& adjs = graph.getAdjacent(cur);
@@ -56,9 +58,12 @@ AdjacencyListGraph<Vertex> Prim<Vertex>::minimumSpanningTree(AdjacencyListGraph<
 				if (!visited[target] && weight < targetAtt.key) {
 					targetAtt.key = weight;
 					targetAtt.parent = cur;
-					// Instead of updating the key of the vertex in the queue,
-					// Insert the same vertex with a new key to reflect the change
-					vertexQ.push(targetAtt.key, target);
+					// Insert
+					if (handles[target].isNull())
+						handles[target] = vertexQ.push(targetAtt.key, target);
+					// Update
+					else
+						vertexQ.decreaseKey(handles[target], targetAtt.key);
 				}
 			}
 		}
