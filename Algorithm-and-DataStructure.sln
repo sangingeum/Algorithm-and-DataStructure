@@ -77,6 +77,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinaryHeap", "DataStructure
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FibonacciHeap", "DataStructure\FibonacciHeap\FibonacciHeap.vcxproj", "{AC7ECBAF-6F38-45EA-AD47-5F23FC95616D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntervalScheduling", "GreedyAlgorithm\IntervalScheduling\IntervalScheduling.vcxproj", "{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GreedyAlgorithm", "GreedyAlgorithm", "{C0CCA663-B98A-4E0B-9016-06F47ECC0E23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -325,6 +329,14 @@ Global
 		{AC7ECBAF-6F38-45EA-AD47-5F23FC95616D}.Release|x64.Build.0 = Release|x64
 		{AC7ECBAF-6F38-45EA-AD47-5F23FC95616D}.Release|x86.ActiveCfg = Release|Win32
 		{AC7ECBAF-6F38-45EA-AD47-5F23FC95616D}.Release|x86.Build.0 = Release|Win32
+		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Debug|x64.ActiveCfg = Debug|x64
+		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Debug|x64.Build.0 = Debug|x64
+		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Debug|x86.ActiveCfg = Debug|Win32
+		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Debug|x86.Build.0 = Debug|Win32
+		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Release|x64.ActiveCfg = Release|x64
+		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Release|x64.Build.0 = Release|x64
+		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Release|x86.ActiveCfg = Release|Win32
+		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -360,6 +372,7 @@ Global
 		{A45785E4-204D-495F-9A7C-A48182ECE76E} = {9551481B-BCA5-498F-8A64-AD9E353B79A6}
 		{2F08C07F-D7D6-466E-8294-8441033D08FA} = {EFDEE9E7-3F5C-4BFF-A1BB-86F3D58263C9}
 		{AC7ECBAF-6F38-45EA-AD47-5F23FC95616D} = {EFDEE9E7-3F5C-4BFF-A1BB-86F3D58263C9}
+		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D} = {C0CCA663-B98A-4E0B-9016-06F47ECC0E23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA13872F-676D-4C25-9FE7-5F4F190C5827}
