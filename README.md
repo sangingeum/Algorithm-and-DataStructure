@@ -38,6 +38,8 @@ This repository contains C++ implementations of various algorithms and data stru
 * Rod Cutting
 * Coin Change
 * Levenshtein Distance
+### Greedy Algorithm
+* Interval Scheduling
 ### Selection Algorithm
 * Quick Select
 ### Convex Hull Algorithm
