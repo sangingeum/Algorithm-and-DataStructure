@@ -19,7 +19,7 @@ public:
 	// This function does not check if the given graph is directed or not
 	static AdjacencyListGraph<Vertex> minimumSpanningTree(AdjacencyListGraph<Vertex>& graph);
 private:
-	static void initialize(AdjacencyListGraph<Vertex>& graph);
+	static void addEdgesToQueue(AdjacencyListGraph<Vertex>& graph, size_t vertex, FibonacciHeap<std::pair<size_t, size_t>>& queue);
 };
 
 
@@ -28,65 +28,45 @@ private:
 template <class Vertex>
 AdjacencyListGraph<Vertex> Prim<Vertex>::minimumSpanningTree(AdjacencyListGraph<Vertex>& graph) {
 	size_t numVertices = graph.getNumVertices();
-	// Initialize the graph
-	initialize(graph);
-
-	// Make a BinaryMinHeap that stores vertices based on their keys
-	// The initial key value for all vertices is set to infinity
-	FibonacciHeap<size_t> vertexQ;
-	for (size_t i = 0; i < numVertices; ++i) {
-		vertexQ.push(std::numeric_limits<float>::max(), i);
-	}
-	// Create a vector for storing handles
-	std::vector<FibonacciHeap<size_t>::Handle> handles(numVertices);
-
-	// Every vertex should be visited only once
-	std::vector<bool> visited(numVertices, false);
-	// Perform the Prim's algorithm until all vertices are visited
-	while (!vertexQ.empty()) {
-		// Extract a vertex with the minimum key
-		auto cur = vertexQ.top(); vertexQ.pop();
-		if (!visited[cur]) {
-			visited[cur] = true;
-			auto& adjs = graph.getAdjacent(cur);
-			auto& edgeAtts = graph.getEdgeAttributes(cur);
-			size_t adjSize = adjs.size();
-			for (size_t i = 0; i < adjSize; ++i) {
-				size_t target = adjs[i];
-				float weight = edgeAtts[i];
-				auto& targetAtt = graph.getVertexAttribute(target);
-				if (!visited[target] && weight < targetAtt.key) {
-					targetAtt.key = weight;
-					targetAtt.parent = cur;
-					// Insert
-					if (handles[target].isNull())
-						handles[target] = vertexQ.push(targetAtt.key, target);
-					// Update
-					else
-						vertexQ.decreaseKey(handles[target], targetAtt.key);
-				}
-			}
-		}
-	}
-
-	// Add edges to construct the MST based on the vertex attributes
+	size_t verticesInTree = 0;
+	// Make a FibonacciHeap that stores edges which are sorted based on their key
+	FibonacciHeap<std::pair<size_t, size_t>> edgeQ;
+	// Every vertex should be included in the tree only once
+	std::vector<bool> isIntree(numVertices, false);
+	// Initialize the queue (assumes the graph has at least one vertex)
+	addEdgesToQueue(graph, 0, edgeQ);
+	isIntree[0] = true;
+	++verticesInTree;
+	// Create an empty MST graph
 	AdjacencyListGraph<Vertex> mst(numVertices);
-	auto& atts = graph.getVertexAttributes();
-	for (size_t i = 0; i < numVertices; ++i) {
-		auto& att = atts[i];
-		if (att.parent < numVertices) {
-			mst.addUndirectedEdge(i, att.parent);
+	// Perform the Prim's algorithm until all vertices are visited
+	while (!edgeQ.empty() && verticesInTree < numVertices) {
+		// Extract an edge with the minimum key
+		auto [edge, key] = edgeQ.topWithKey(); edgeQ.pop();
+		auto [u, v] = std::move(edge);
+		if (!isIntree[v]) { // Already in the tree. Skip.
+			isIntree[v] = true;
+			addEdgesToQueue(graph, v, edgeQ);
+			++verticesInTree;
+			// Add the edge to the MST
+			mst.addUndirectedEdge(u, v);
 		}
 	}
 
 	return mst;
 }
 
-template <class Vertex>
-void Prim<Vertex>::initialize(AdjacencyListGraph<Vertex>& graph) {
-	auto& vertextAtts = graph.getVertexAttributes();
-	for (auto& att : vertextAtts) {
-		att.parent = std::numeric_limits<size_t>::max();
-		att.key = std::numeric_limits<float>::infinity();
+
+template<class Vertex>
+inline void Prim<Vertex>::addEdgesToQueue(AdjacencyListGraph<Vertex>& graph, size_t vertex, FibonacciHeap<std::pair<size_t, size_t>>& queue)
+{
+	auto& adjs = graph.getAdjacent(vertex);
+	auto& edgeAtts = graph.getEdgeAttributes(vertex);
+	size_t adjSize = adjs.size();
+	for (size_t i = 0; i < adjSize; ++i) {
+		size_t target = adjs[i];
+		float weight = edgeAtts[i];
+		queue.push(weight, { vertex, target });
 	}
+
 }

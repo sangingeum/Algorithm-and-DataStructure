@@ -42,14 +42,14 @@ int main() {
 	}
 
 	/*
-	Vertex 0 is connected to [ 1 7 ]
-	Vertex 1 is connected to [ 0 ]
-	Vertex 2 is connected to [ 5 3 8 ]
+	Vertex 0 is connected to [ 1 ]
+	Vertex 1 is connected to [ 0 2 ]
+	Vertex 2 is connected to [ 1 8 5 3 ]
 	Vertex 3 is connected to [ 2 4 ]
 	Vertex 4 is connected to [ 3 ]
 	Vertex 5 is connected to [ 2 6 ]
 	Vertex 6 is connected to [ 5 7 ]
-	Vertex 7 is connected to [ 6 0 ]
+	Vertex 7 is connected to [ 6 ]
 	Vertex 8 is connected to [ 2 ]
 	*/
 	return 0;

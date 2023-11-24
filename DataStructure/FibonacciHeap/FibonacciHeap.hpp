@@ -18,7 +18,7 @@ private:
 		Node* left{ this };
 		Node* right{ this };
 		Node* child{ nullptr };
-		Node(float key_, D data_) : key(key_), data(std::move(data_)){}
+		Node(float key_, D data_) : key(key_), data(std::move(data_)) {}
 	};
 
 	// Private members
@@ -37,9 +37,10 @@ public:
 
 	// Constructor & Destructor
 	FibonacciHeap() = default;
-	~FibonacciHeap() { if(m_top) recursiveFree(m_top);}
+	~FibonacciHeap() { if (m_top) recursiveFree(m_top); }
 	// Operations
 	D top() const;
+	std::pair<D, float> topWithKey() const;
 	Handle push(float key, D data);
 	void pop();
 	void remove(Handle handle);
@@ -84,6 +85,12 @@ typename FibonacciHeap<D>::Handle FibonacciHeap<D>::push(float key, D data) {
 template<class D>
 D FibonacciHeap<D>::top() const {
 	return m_top->data;
+}
+
+template<class D>
+inline std::pair<D, float> FibonacciHeap<D>::topWithKey() const
+{
+	return std::pair<D, float>(m_top->data, m_top->key);
 }
 
 // Pop a node with the lowest key
