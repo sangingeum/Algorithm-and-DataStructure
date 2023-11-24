@@ -39,7 +39,7 @@ AdjacencyListGraph<Vertex> Prim<Vertex>::minimumSpanningTree(AdjacencyListGraph<
 	++verticesInTree;
 	// Create an empty MST graph
 	AdjacencyListGraph<Vertex> mst(numVertices);
-	// Perform the Prim's algorithm until all vertices are visited
+	// Perform the Prim's algorithm until all vertices are included
 	while (!edgeQ.empty() && verticesInTree < numVertices) {
 		// Extract an edge with the minimum key
 		auto [edge, key] = edgeQ.topWithKey(); edgeQ.pop();

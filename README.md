@@ -27,6 +27,7 @@ This repository contains C++ implementations of various algorithms and data stru
 ### Graph Algorithm
 * Kruskal's Algorithm
 * Prim's Algorithm
+* Floyd-Warshall Algorithm
 * Bellman-Ford Algorithm
 * Shortest Path in a Directed Acyclic Graph(DAG)
 * Dijkstra's Algorirhm

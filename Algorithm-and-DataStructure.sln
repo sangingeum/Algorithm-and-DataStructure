@@ -81,6 +81,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntervalScheduling", "Greed
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GreedyAlgorithm", "GreedyAlgorithm", "{C0CCA663-B98A-4E0B-9016-06F47ECC0E23}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FloydWarshall", "GraphAlgorithm\FloydWarshall\FloydWarshall.vcxproj", "{8C5A0998-5871-4C67-8230-F8121569698E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -337,6 +339,14 @@ Global
 		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Release|x64.Build.0 = Release|x64
 		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Release|x86.ActiveCfg = Release|Win32
 		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D}.Release|x86.Build.0 = Release|Win32
+		{8C5A0998-5871-4C67-8230-F8121569698E}.Debug|x64.ActiveCfg = Debug|x64
+		{8C5A0998-5871-4C67-8230-F8121569698E}.Debug|x64.Build.0 = Debug|x64
+		{8C5A0998-5871-4C67-8230-F8121569698E}.Debug|x86.ActiveCfg = Debug|Win32
+		{8C5A0998-5871-4C67-8230-F8121569698E}.Debug|x86.Build.0 = Debug|Win32
+		{8C5A0998-5871-4C67-8230-F8121569698E}.Release|x64.ActiveCfg = Release|x64
+		{8C5A0998-5871-4C67-8230-F8121569698E}.Release|x64.Build.0 = Release|x64
+		{8C5A0998-5871-4C67-8230-F8121569698E}.Release|x86.ActiveCfg = Release|Win32
+		{8C5A0998-5871-4C67-8230-F8121569698E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -373,6 +383,7 @@ Global
 		{2F08C07F-D7D6-466E-8294-8441033D08FA} = {EFDEE9E7-3F5C-4BFF-A1BB-86F3D58263C9}
 		{AC7ECBAF-6F38-45EA-AD47-5F23FC95616D} = {EFDEE9E7-3F5C-4BFF-A1BB-86F3D58263C9}
 		{51E58A0B-E0A8-4FF1-ACE5-D2C55ACF760D} = {C0CCA663-B98A-4E0B-9016-06F47ECC0E23}
+		{8C5A0998-5871-4C67-8230-F8121569698E} = {85992D98-BDB4-42EE-BC17-1AEA290D154A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA13872F-676D-4C25-9FE7-5F4F190C5827}
